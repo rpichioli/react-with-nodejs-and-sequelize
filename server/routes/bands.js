@@ -1,24 +1,27 @@
 import express from 'express';
-import { validateID } from './validations/shared';
+//import {  } from './validations/shared';
+import { getByID } from './validations/bands';
+import staticBands from '../data/bands';
 
-const app = express.Router();
+const router = express.Router();
 
-app.get('/', (req, res) => {
-	let bands = [
-		{ id: 1, title: "Iced Earth" },
-		{ id: 2, title: "Iron Maiden" },
-		{ id: 3, title: "Lost Horizon" },
-		{ id: 4, title: "Sabaton" },
-		{ id: 4, title: "Stratovarius" }
-	];
+/**
+ * Return all registered bands
+ */
+router.get('/', (req, res) => {
+	let bands = staticBands;
 	res.json({ success: true, data: bands })
 });
 
-app.get('/:id', (req, res) => {
-	let { errors, isValid } = validateID(req.params.id);
+/**
+ * Get band by ID
+ */
+router.get('/:id', (req, res) => {
+	let { error, isValid, band } = getByID(req.params.id);
 	if (isValid) {
-		let data = { id: req.params.id, title: "Iced Earth" };
-		res.json({ success: true, data, isValid: isValid});
+		res.json({ success: isValid, data: band, isValid: isValid });
 	} else
-		res.status(400).json({ success: false, error: error, isValid: isValid });
+		res.status(400).json({ success: isValid, error: error, isValid: isValid });
 });
+
+export default router;
