@@ -10,11 +10,11 @@ const router = express.Router();
  * Return all registered bands
  */
 router.get('/', (req, res) => {
-	models.band.findAll().then(data => {
-		if (data && Object.keys(data).length > 0)
-			res.json({ success: true, data: data });
+	models.band.findAll().then(bands => {
+		if (bands && Object.keys(bands).length > 0)
+			res.json({ bands });
 		else
-			res.status(400).json({ sucess: false, error: "Any band found.", data: {} });
+			res.status(400).json({ error: "Any band found." });
 	})
 });
 
