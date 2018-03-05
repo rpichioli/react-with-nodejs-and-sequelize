@@ -1,4 +1,4 @@
-# The "react-example-crud" project
+# The "react-example-crud" project (in development)
 This project is a simple CRUD that must test some different stuff together.
 
 - The client-side is a React + Redux app based.
