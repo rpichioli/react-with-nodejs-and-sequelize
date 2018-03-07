@@ -9,7 +9,7 @@ class Menu extends React.Component {
 				<div className="ui container">
 					<a href="/" className="header item">
 						<img className="logo App-logo" src={logo} alt="Logo" />
-						RPichioli's CRUD
+						Bands App
 					</a>
 
 					<NavLink className="item" activeonlywhenexact="active" exact to="/">Home</NavLink>
