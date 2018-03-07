@@ -5,7 +5,7 @@ class HomePage extends React.Component {
 		return (
 			<div class="ui container text">
 				<h1>Welcome to the client-side</h1>
-				<p>This a React + Redux client-side application with Semantic UI as user interface.</p>
+				<p>This a React + Redux client-side application buitl with Semantic UI user interface.</p>
 			</div>
 		);
 	}

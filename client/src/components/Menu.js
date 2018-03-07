@@ -17,10 +17,10 @@ class Menu extends React.Component {
 
 					<div className="right menu">
 						<div className="item">
-							<NavLink className="ui button" exact to="/login">Log in</NavLink>
+							<NavLink className="ui button" exact to="/sign-in">Sign in</NavLink>
 						</div>
 						<div className="item">
-							<NavLink className="ui primary button" exact to="/signup">Sign Up</NavLink>
+							<NavLink className="ui primary button" exact to="/sign-up">Sign Up</NavLink>
 						</div>
 					</div>
 				</div>
