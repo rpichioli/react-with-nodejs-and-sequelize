@@ -7,16 +7,16 @@
         "dialect": "mysql"
     },
     "test": {
-        "username": "",
-        "password": null,
-        "database": "",
+        "username": "root",
+        "password": "",
+        "database": "react_sequelize",
         "host": "",
         "dialect": "mysql"
     },
     "production": {
-        "username": "",
-        "password": null,
-        "database": "",
+        "username": "root",
+        "password": "",
+        "database": "react_sequelize",
         "host": "",
         "dialect": "mysql"
     }

@@ -20,6 +20,7 @@
 		"lodash": "^4.17.5",
 		"mysql2": "^1.5.2",
 		"sequelize": "^4.35.1",
+		"sequelize-cli": "^4.0.0",
 		"validator": "^9.4.1"
 	}
 }

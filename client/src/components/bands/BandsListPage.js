@@ -15,7 +15,7 @@ class BandsPage extends React.Component {
 		const bands = this.props.bands;
 		return (
 			<div>
-				<h1>Bands</h1>
+				<h1>Bands List</h1>
 				{bands && <BandsList bands={bands} />}
 			</div>
 		);
