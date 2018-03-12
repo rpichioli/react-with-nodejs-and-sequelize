@@ -1,16 +1,12 @@
-# The project (in development, not finished)
-The main idea of the project is an application which works with relationed tables building a CRUD for each one and also a login/logout feature, basicly.
+# The project (in development)
+The main idea of thi project is to create an application which works with relational database building CRUDs, simple and complex forms, explore React features and possibilities, and also a login/logout feature based on an anthorization middleware in the API backend layer to access all the stuff.
 
 - The **client-side** is a React + Redux app based.
 - The **server-side** is built in NodeJS (Express) and works like an API server.
 
+The Passport based authorization middleware will intercept all requests, verify their data if necessary and proceed with the authorization or not, depending on it's logic.
+
 >This application uses Sequelize ORM to manage relational database and maintain it's data.
-
->We are using Passport to build a middleware. 
-
-The Passport authorization middleware will intercept all requests, verify their data if necessary and proceed with the authorization or not, depending on it's logic.
-
-I hope this simple project could help new developers to get a direction, some ideas and to take a look into another way to program with all of these fantastic technologies and it's features :)
 
 If you have some suggestion, please let me know about it!
 
