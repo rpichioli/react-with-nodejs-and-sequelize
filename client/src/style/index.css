@@ -1,5 +1,27 @@
-.main.container {
+.main {
 	margin-top: 6em;
+}
+
+.masthead.segment {
+	min-height: 400px;
+	padding: 1em 0em;
+	margin-top: -3em !important;
+}
+.masthead .logo.item img {
+	margin-right: 1em;
+}
+.masthead .ui.menu .ui.button {
+	margin-left: 0.5em;
+}
+.masthead h1.ui.header {
+	margin-top: 3em;
+	margin-bottom: 0em;
+	font-size: 3em;
+	font-weight: normal;
+}
+.masthead h2 {
+	font-size: 1.2em;
+	font-weight: normal;
 }
 
 .App-logo {

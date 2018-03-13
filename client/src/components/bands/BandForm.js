@@ -2,10 +2,21 @@ import React from 'react';
 import classnames from 'classnames';
 
 class BandForm extends React.Component {
-	state = {
-		title: '',
-		year: '',
-		loading: false
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			title: '',
+			year: '',
+			loading: false
+		}
+
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	componentDidMount() {
+
 	}
 
 	handleChange(e) {
@@ -20,15 +31,31 @@ class BandForm extends React.Component {
 		return (
 			<form className={classnames('ui', 'form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
 
-				<h4 class="ui dividing header">Fill with the band information</h4>
+				<h4 class="ui dividing header">Fill the form below with the band information</h4>
 
 				<div className="field">
 					<label for="title">Title</label>
-					<input className="ui input" onChange={this.handleChange} name="title" id="title" type="text" placeholder="The name of the band" />
+					<input
+						type="text"
+						name="title"
+						id="title"
+						value={this.state.title}
+						className="ui input"
+						placeholder="The name of the band"
+						onChange={this.handleChange}
+					/>
 				</div>
 				<div className="field">
 					<label for="year">Year</label>
-					<input className="ui input" onChange={this.handleChange} name="year" id="year" type="text" placeholder="Foundation year" />
+					<input
+						type="text"
+						name="year"
+						id="year"
+						value={this.state.year}
+						className="ui input"
+						placeholder="Foundation year"
+						onChange={this.handleChange}
+					/>
 				</div>
 				<div className="field">
 					<button type="submit" className="ui primary button">Save</button>

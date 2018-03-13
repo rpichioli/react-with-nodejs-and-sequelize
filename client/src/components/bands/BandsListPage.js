@@ -1,8 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { connect } from 'react-redux';
+
+// Actions
 import { fetchBands } from '../../actions/bands';
+// Components
 import BandsList from './BandsList';
 
 class BandsPage extends React.Component {
@@ -14,7 +16,7 @@ class BandsPage extends React.Component {
 	render() {
 		const bands = this.props.bands;
 		return (
-			<div>
+			<div className="ui container">
 				<h1>Bands List</h1>
 				{bands && <BandsList bands={bands} />}
 			</div>

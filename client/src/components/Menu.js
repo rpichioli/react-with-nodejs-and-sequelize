@@ -9,7 +9,7 @@ class Menu extends React.Component {
 				<div className="ui container">
 					<a href="/" className="header item">
 						<img className="logo App-logo" src={logo} alt="Logo" />
-						Bands App
+						React | All-in-One
 					</a>
 
 					<NavLink className="item" activeonlywhenexact="active" exact to="/">Home</NavLink>
@@ -17,10 +17,16 @@ class Menu extends React.Component {
 
 					<div className="right menu">
 						<div className="item">
-							<NavLink className="ui button" exact to="/sign-in">Sign in</NavLink>
+							<NavLink className="ui green button basic" exact to="/sign-in">
+								<i class="paper plane icon"></i>
+								Sign in
+							</NavLink>
 						</div>
 						<div className="item">
-							<NavLink className="ui primary button" exact to="/sign-up">Sign Up</NavLink>
+							<NavLink className="ui blue button basic" exact to="/sign-up">
+								<i class="keyboard icon"></i>
+								Sign Up
+							</NavLink>
 						</div>
 					</div>
 				</div>
