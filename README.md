@@ -1,21 +1,24 @@
-# The "react-example-crud" project
-This project is a simple CRUD that must test some different stuff together.
+# The project (in development)
+The main idea of thi project is to create an application which works with relational database building CRUDs, simple and complex forms, explore React features and possibilities, and also a login/logout feature based on an anthorization middleware in the API backend layer to access all the stuff.
 
-- The client-side is a React + Redux app based.
-- The server-side is built in NodeJS (Express) and works like an API server.
+- The **client-side** is a React + Redux app based.
+- The **server-side** is built in NodeJS (Express) and works like an API server.
 
-This application uses Sequelize ORM to manage relational database and maintain it's data.
-We will use Passport to build a middleware that will respond for all authorization in every request call from frontend to the backend.
+The Passport based authorization middleware will intercept all requests, verify their data if necessary and proceed with the authorization or not, depending on it's logic.
 
-Hope this simple project help everyone in studying, get new ideas and to take a look into another way to program with all of these fantastic technologies and it's features :)
+>This application uses Sequelize ORM to manage relational database and maintain it's data.
 
 If you have some suggestion, please let me know about it!
 
-# Server-Side
-Located in the "/server/" folder, here becomes the NodeJS Express application.
+## Server-Side
+Located in the "/server/" folder, here becomes the NodeJS Express application. 
 
-# Client-Side
+Use ```npm install``` to install all dependencies and ```npm start``` to run the app.
+
+## Client-Side
 Located in the "/client/" folder, here is the React app. Built with the package "create-react-app" and working with Redux.
 
-# Copyright
+Use ```npm install``` to install all dependencies and ```npm start``` to run the app.
+
+## Copyright
 Rodrigo Quiñones Pichioli, since Mar/02/2018
