@@ -7,7 +7,7 @@ class App extends Component {
 			<div>
 				<Menu></Menu>
 
-				<div className="ui main container">
+				<div className="main">
 					{this.props.children}
 				</div>
 			</div>
