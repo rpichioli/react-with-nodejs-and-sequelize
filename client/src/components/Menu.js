@@ -18,13 +18,13 @@ class Menu extends React.Component {
 					<div className="right menu">
 						<div className="item">
 							<NavLink className="ui green button basic" exact to="/sign-in">
-								<i class="paper plane icon"></i>
+								<i className="paper plane icon"></i>
 								Sign in
 							</NavLink>
 						</div>
 						<div className="item">
 							<NavLink className="ui blue button basic" exact to="/sign-up">
-								<i class="keyboard icon"></i>
+								<i className="keyboard icon"></i>
 								Sign Up
 							</NavLink>
 						</div>

@@ -39,9 +39,9 @@ router.get('/:id', (req, res) => {
 
 	models.band.findById(req.params.id).then(data => {
 		if (data)
-			res.json({ success: true, data: data });
+			res.json({ success: true, band: data });
 		else
-			res.status(400).json({ success: false, error: "Band not found.", data: {} });
+			res.status(400).json({ success: false, error: "Band not found.", band: {} });
 	})
 });
 

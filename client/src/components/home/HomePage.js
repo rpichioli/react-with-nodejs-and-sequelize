@@ -27,7 +27,7 @@ class HomePage extends React.Component {
 								<p>The backend consists in a Express application working togheter with Sequelize ORM to manage data from relational database and return data based on each business rule and request.</p>
 							</div>
 							<div class="six wide right floated column">
-								<img src="https://raw.githubusercontent.com/rexxars/react-hexagon/HEAD/logo/react-hexagon.png" class="ui large bordered rounded image"/>
+								<img src="https://raw.githubusercontent.com/rexxars/react-hexagon/HEAD/logo/react-hexagon.png" class="ui large bordered rounded image" alt="atom" />
 							</div>
 						</div>
 						<div class="row">

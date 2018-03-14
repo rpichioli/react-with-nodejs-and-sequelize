@@ -9,11 +9,11 @@ export default function BandsList({ bands }) {
 				<td>{band.title}</td>
 				<td>{band.year}</td>
 				<td style={{ textAlign: "right" }}>
-					<NavLink exact to={`/bands/${band.id}`} title="Edit">
-						<i className="edit icon blue"></i>
+					<NavLink exact to={`/band/${band.id}`} title="Edit">
+						<i className="icon edit blue"></i>
 					</NavLink>
-					<NavLink exact to={`/bands/delete/${band.id}`} title="Delete">
-						<i className="trash icon red"></i>
+					<NavLink exact to={`/band/delete/${band.id}`} title="Delete">
+						<i className="icon trash red"></i>
 					</NavLink>
 				</td>
 			</tr>
@@ -42,6 +42,7 @@ export default function BandsList({ bands }) {
 
 	return (
 		<div>
+			<NavLink exact to="/bands/new" className="ui button primary">Add New</NavLink>
 			{bands && Object.keys(bands).length > 0 ? grid : emptyMessage}
 		</div>
 	);
