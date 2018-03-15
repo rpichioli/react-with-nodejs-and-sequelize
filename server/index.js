@@ -7,8 +7,13 @@ const app = express();
 
 // Body parser
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}))
 // Routes
 app.use('/api/bands/', bands);
+// Middleware for errors
+app.use((req, res) => {
+	res.status(404).json({ errors: { global: "Still working on it. Please try again later when we implement it." } });
+});
 
 // Sync database with Sequelize models
 models.sequelize.sync().then(function() {

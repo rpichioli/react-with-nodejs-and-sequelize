@@ -38,6 +38,12 @@ class BandForm extends React.Component {
 		});
 	}
 
+	focusFieldOnError(errors) {
+		// errors.map(item => {
+		// 	if (item && item.)
+		// })
+	}
+
 	handleChange(e) {
 		this.setState({ [e.target.name]: e.target.value });
 	}
@@ -49,19 +55,35 @@ class BandForm extends React.Component {
 		let errors = {};
 		if (this.state.title === '') errors.title = "This field can't be empty";
 		if (this.state.year === '') errors.year = "This field can't be empty";
+		// Fill the error state
 		this.setState({ errors });
+		// Focus 1st error field
+		//if (Object.keys(errors).count > 0) focusFieldOnError(errors);
 		// -------------------------------------------------------------
+
+		const isValid = Object.keys(errors).length === 0;
+
+		if (isValid) {
+			const { id, title, year } = this.state;
+			this.setState({ loading: true });
+
+			this.props.saveBand({ id, title, cover }).catch((err) => {
+				err.response.json().then(({errors}) => {
+					this.setState({ errors, loading: false })
+				})
+			});
+		}
 	}
 
 	render() {
 		return (
-			<form className={classnames('ui', 'form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
+			<form className={classnames("ui", "form", { loading: this.state.loading })} onSubmit={this.handleSubmit}>
 
 				<h4 className="ui dividing header">Fill the form below with the band information</h4>
 
 				{!!this.state.errors.global && <div className="ui negative message"><p>{this.state.errors.global}</p></div>}
 
-				<div className="field">
+				<div className={classnames("field", { error: !!this.state.errors.title })}>
 					<label htmlFor="title">Title</label>
 					<input
 						type="text" id="title" name="title"
@@ -69,10 +91,11 @@ class BandForm extends React.Component {
 						className="ui input"
 						placeholder="The name of the band"
 						onChange={this.handleChange}
+						ref={(input) => { this.titleInput = input }}
 					/>
 					<span>{this.state.errors.title}</span>
 				</div>
-				<div className="field">
+				<div className={classnames("field", { error: !!this.state.errors.year })}>
 					<label htmlFor="year">Year</label>
 					<input
 						type="text" id="year" name="year"
@@ -80,6 +103,7 @@ class BandForm extends React.Component {
 						className="ui input"
 						placeholder="Foundation year"
 						onChange={this.handleChange}
+						ref={(input) => { this.yearInput = input }}
 					/>
 					<span>{this.state.errors.year}</span>
 				</div>
@@ -92,7 +116,8 @@ class BandForm extends React.Component {
 }
 
 BandForm.propTypes = {
-	band: PropTypes.object
+	band: PropTypes.object,
+	saveBand: PropTypes.func.isRequired
 };
 
 export default BandForm;

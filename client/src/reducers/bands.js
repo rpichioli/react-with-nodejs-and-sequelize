@@ -3,8 +3,8 @@ import { SET_BANDS, BAND_FETCHED } from '../actions/bands';
 export default function bands(state = [], action = {}) {
 	switch (action.type) {
 		case BAND_FETCHED:
-			console.log('reducer');
-			console.log(action.band);
+			//console.log('reducer');
+			//console.log(action.band);
 			const index = state.findIndex(item => item.id === action.band.id);
 
 			if (index > -1) {
