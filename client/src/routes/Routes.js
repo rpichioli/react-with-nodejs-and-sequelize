@@ -14,7 +14,7 @@ class Routes extends React.Component {
 				<Route exact path="/" component={HomePage} />
 				<Route exact path="/bands" component={BandsListPage} />
 				<Route path="/bands/new" component={BandFormPage} />
-				<Route path="/band/:_id" component={BandFormPage} />
+				<Route path="/band/:id" component={BandFormPage} />
 				<Route path="/sign-in" component={SignInPage} />
 				<Route path="/sign-up" component={SignUpPage} />
 			</Switch>

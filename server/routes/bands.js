@@ -61,13 +61,9 @@ router.post('/', (req, res) => {
  * Update band by ID
  */
 router.put('/:id', (req, res) => {
-	// @todo
-	// req.params.id
-	// req.body
-
 	let { id, title, year } = req.body;
 	models.band
-		.update({ title: title, year: year }, { id: id })
+		.update({ title, year }, { where: { id } })
 		.then(() => res.json({ success: true }))
 		.catch((err) => res.status(400).json({ errors: { globals: "Ops, something wrong happened.." } }));
 });
@@ -78,7 +74,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
 	let id = req.params.id;
 	models.band
-		.destroy({ where: { id: id } })
+		.destroy({ where: { id } })
 		.then((rowDeleted) => res.json({ success: true, deleted: rowDeleted }))
 		.catch((err) => res.status(500).json({ errors: { globals: err } }));
 });
