@@ -7,7 +7,7 @@ import Validator from 'validator';
 const router = express.Router();
 
 /**
- * Return all registered bands
+ * Get all bands
  */
 router.get('/', (req, res) => {
 	models.band.findAll().then(bands => {
@@ -34,8 +34,7 @@ router.get('/:id', (req, res) => {
 	else if (id <= 0)
 		error = "Invalid value.";
 
-	if (error)
-		res.status(400).json({ success: false, error: error, data: {} });
+	if (error) res.status(400).json({ success: false, error: error, data: {} });
 
 	models.band.findById(req.params.id).then(data => {
 		if (data)
@@ -43,6 +42,41 @@ router.get('/:id', (req, res) => {
 		else
 			res.status(400).json({ success: false, error: "Band not found.", band: {} });
 	})
+});
+
+/**
+ * Insert new band
+ */
+router.post('/', (req, res) => {
+	let { title, year } = req.body;
+	console.log(req.body);
+	models.band
+		.build({ title: title, year: year })
+		.save()
+		.then(() => res.json({ success: true }))
+		.catch((err) => res.status(400).json({ errors: { globals: err } }));
+});
+
+/**
+ * Update band by ID
+ */
+router.put('/:id', (req, res) => {
+	let { id, title, year } = req.body;
+	models.band
+		.update({ title, year }, { where: { id } })
+		.then(() => res.json({ success: true }))
+		.catch((err) => res.status(400).json({ errors: { globals: "Ops, something wrong happened.." } }));
+});
+
+/**
+ * Delete band by ID
+ */
+router.delete('/:id', (req, res) => {
+	let id = req.params.id;
+	models.band
+		.destroy({ where: { id } })
+		.then((rowDeleted) => res.json({ success: true, deleted: rowDeleted }))
+		.catch((err) => res.status(500).json({ errors: { globals: err } }));
 });
 
 export default router;

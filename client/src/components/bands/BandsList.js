@@ -2,23 +2,30 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default function BandsList({ bands }) {
-	var gridLines = bands.map((band, i) => {
-		return (
-			<tr>
-				<td>{band.id}</td>
-				<td>{band.title}</td>
-				<td>{band.year}</td>
-				<td style={{ textAlign: "right" }}>
-					<NavLink exact to={`/band/${band.id}`} title="Edit">
-						<i className="icon edit blue"></i>
-					</NavLink>
-					<NavLink exact to={`/band/delete/${band.id}`} title="Delete">
-						<i className="icon trash red"></i>
-					</NavLink>
-				</td>
-			</tr>
-		);
-	});
+
+	let gridLines = "";
+	console.log(bands);
+	if (bands.length !== 0) {
+		gridLines = bands.map((band, i) => {
+			if (band) {
+				return (
+					<tr>
+						<td>{band.id}</td>
+						<td>{band.title}</td>
+						<td>{band.year}</td>
+						<td style={{ textAlign: "right" }}>
+							<NavLink exact to={`/band/${band.id}`} title="Edit">
+								<i className="icon edit blue"></i>
+							</NavLink>
+							<NavLink exact to={`/band/delete/${band.id}`} title="Delete">
+								<i className="icon trash red"></i>
+							</NavLink>
+						</td>
+					</tr>
+				);
+			}
+		});
+	}
 
 	const grid = (
 		<table className="ui striped selectable compact table">
@@ -43,7 +50,7 @@ export default function BandsList({ bands }) {
 	return (
 		<div>
 			<NavLink exact to="/bands/new" className="ui button primary">Add New</NavLink>
-			{bands && Object.keys(bands).length > 0 ? grid : emptyMessage}
+			{bands.length === 0 ? emptyMessage : grid}
 		</div>
 	);
 }
