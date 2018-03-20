@@ -14,13 +14,18 @@ class BandFormPage extends React.Component {
 		this.saveBand = this.saveBand.bind(this);
 	}
 
+	/**
+	 * Fetch the band if the ID param exists
+	 */
 	componentDidMount() {
 		if (typeof this.props.match.params.id !== "undefined") {
 			this.props.fetchBand(this.props.match.params.id);
 		}
 	}
 
-
+	/**
+	 * Function that decides what action to call based on received params, sent as a property to child component
+	 */
 	saveBand = ({ id, title, year }) => {
 		if (!id)
 			this.props.addBand({ title, year }).then(() => this.setState({ redirect: true }));
@@ -32,6 +37,7 @@ class BandFormPage extends React.Component {
 		return(
 			<div>
 				{
+					// Redirect if some action has worked succesfully, render if not
 					this.state.redirect ?
 						<Redirect to="/bands" /> :
 						<div className="ui container">
@@ -52,7 +58,9 @@ BandFormPage.propTypes = {
 
 function mapStateToProps(state, props) {
 	if (props.match.params && props.match.params.id > 0) {
-		return { band: state.bands.find(item => item.id == props.match.params.id) };
+		return {
+			band: state.bands.find(item => item.id == props.match.params.id)
+		};
 	}
 
 	return { band: null };

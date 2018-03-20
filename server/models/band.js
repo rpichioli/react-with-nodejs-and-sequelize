@@ -1,31 +1,31 @@
 export default (sequelize, Sequelize) => {
 	const Band = sequelize.define('band', {
-		id: {
-            type: Sequelize.INTEGER,
-			primaryKey: true,
-			autoIncrement: true,
-			comment: "Year of the album"
-        },
         title: {
             type: Sequelize.STRING(50),
             notEmpty: true,
 			allowNull: false,
-			comment: "Year of the album"
+			comment: "Title of the band"
         },
+		description: {
+			type: Sequelize.STRING(500),
+			allowNull: true,
+			comment: "Description of the album"
+		},
 		year: {
 			type: Sequelize.INTEGER(4),
 			notEmpty: true,
 			allowNull: false,
-			comment: "Year of the album"
+			comment: "Birth year"
 		}
 	}, {
-		tableName: 'band',
-		classMethods:{
-			associate:function(models){
-				Band.hasMany(models.Album);
-			}
-		}
+		tableName: 'band'
 	});
+
+	Band.associate = (models) => {
+		Band.hasMany(models.album, {
+			foreignKey: 'band_id'
+		});
+	}
 
 	return Band;
 }

@@ -1,20 +1,14 @@
 export default (sequelize, Sequelize) => {
 	const Album = sequelize.define("album", {
-		id: {
-            type: Sequelize.INTEGER,
-			primaryKey: true,
-			autoIncrement: true,
-			comment: "PK of the table"
-        },
-		band_id: {
-            type: Sequelize.INTEGER,
-			allowNull: false,
-			comment: "FK to the band PK table"
-        },
 		title: {
 			type: Sequelize.STRING(100),
 			allowNull: false,
 			comment: "Title of the album"
+		},
+		description: {
+			type: Sequelize.STRING(500),
+			allowNull: true,
+			comment: "Description of the album"
 		},
 		cover: {
 			type: Sequelize.STRING(150),
@@ -28,15 +22,14 @@ export default (sequelize, Sequelize) => {
 		}
 	}, {
 		tableName: "album",
-		classMethods:{
-			associate:function(models){
-				Album.belongsTo(models.Band, {
-					foreignKey: 'band_id',
-					foreignKeyConstraint: true
-				});
-			}
-		}
+		freezeTableName: true
 	});
+
+	Album.associate = (models) => {
+		Album.belongsTo(models.band, {
+			foreignKey: 'band_id'
+		});
+	}
 
 	return Album;
 }
