@@ -14,6 +14,9 @@ export default function BandsList({ bands }) {
 						<td>{band.title}</td>
 						<td>{band.year}</td>
 						<td style={{ textAlign: "right" }}>
+							<NavLink exact to={`/band/albums/${band.id}`} title="Edit">
+								<i className="icon info"></i>
+							</NavLink>
 							<NavLink exact to={`/band/${band.id}`} title="Edit">
 								<i className="icon edit blue"></i>
 							</NavLink>

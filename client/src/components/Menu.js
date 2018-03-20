@@ -15,7 +15,7 @@ class Menu extends React.Component {
 					<NavLink className="item" activeonlywhenexact="active" exact to="/">Home</NavLink>
 					<NavLink className="item" activeonlywhenexact="active" exact to="/bands">Bands</NavLink>
 
-					<div className="right menu">
+					{/* <div className="right menu">
 						<div className="item">
 							<NavLink className="ui green button basic" exact to="/sign-in">
 								<i className="paper plane icon"></i>
@@ -28,7 +28,7 @@ class Menu extends React.Component {
 								Sign Up
 							</NavLink>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		);

@@ -9,6 +9,9 @@ import BandsList from './BandsList';
 
 class BandsPage extends React.Component {
 
+	/**
+	 * Fetch all bands on component load
+	 */
 	componentDidMount() {
 		this.props.fetchBands();
 	}
