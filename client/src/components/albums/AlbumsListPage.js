@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { fetchBandAlbums } from '../actions/albums';
+
 class AlbumsListPage extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 
 	componentDidMount() {
-		if (typeof this.props.match.params.band_id !== "undefined") {
-			// Fetch
+		if (typeof this.props.match.params.id !== "undefined") {
+			this.props.fetchBandAlbums(this.props.match.params.id);
 		}
 	}
 
@@ -24,7 +26,7 @@ class AlbumsListPage extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-	return { band: null };
+	return { bands: state.bands };
 }
 
-export default connect(mapStateToProps, {})(AlbumsListPage);
+export default connect(mapStateToProps, { fetchBandAlbums })(AlbumsListPage);

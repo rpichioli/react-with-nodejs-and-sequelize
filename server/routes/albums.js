@@ -3,12 +3,12 @@ import models from "../models";
 
 const router = express.Router();
 
-router.get('/from-band/:band_id', (req, res) => {
-	models.album.findAll({ where: { band_id: req.params.band_id } }).then(albums => {
+router.get('/', (req, res) => {
+	models.album.findAll().then(albums => {
 		if (albums && Object.keys(albums).length > 0)
 			res.json({ albums });
 		else
-			res.status(400).json({ error: "Any albums found for the requested band." });
+			res.status(400).json({ error: "Any albums found." });
 	});
 });
 
