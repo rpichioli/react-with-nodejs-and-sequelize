@@ -1,4 +1,11 @@
-import { SET_BANDS, BAND_FETCHED, BAND_SAVED, BAND_UPDATED, BAND_DELETED } from '../actions/bands';
+import {
+	SET_BANDS,
+	BAND_FETCHED,
+	BAND_SAVED,
+	BAND_UPDATED,
+	BAND_DELETED,
+	SET_BAND_ALBUMS
+} from '../actions/bands';
 
 export default function bands(state = [], action = {}) {
 	switch (action.type) {
@@ -21,6 +28,14 @@ export default function bands(state = [], action = {}) {
 			});
 		case BAND_DELETED:
 			return state.bands.filter(item => item.id !== action.bandId);
+		case SET_BAND_ALBUMS:
+			return state.map(item => {
+				if (item.id === action.bandId) {
+					item.albums = action.albums;
+					return item.albums;
+				}
+				return item;
+			})
 		default:
 			return state;
 	}
