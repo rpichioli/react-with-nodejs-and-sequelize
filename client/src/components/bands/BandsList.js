@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export default function BandsList({ bands }) {
 
 	let gridLines = "";
-	console.log(bands);
+
 	if (bands.length !== 0) {
 		gridLines = bands.map((band, i) => {
 			if (band) {
@@ -53,7 +53,7 @@ export default function BandsList({ bands }) {
 	return (
 		<div>
 			<NavLink exact to="/bands/new" className="ui button primary">Add New</NavLink>
-			{bands.length === 0 ? emptyMessage : grid}
+			{bands.length > 0 ? grid : emptyMessage }
 		</div>
 	);
 }

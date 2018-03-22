@@ -67,7 +67,7 @@ export function deleteBand(band) {
 export default function fetchBandAlbums(bandId) {
 	return dispatch => {
 		return axios.get(`api/bands/${bandId}/albums`)
-			.then(response => dispatch(setBandAlbums(bandIdresponse.data.bands)))
+			.then(response => dispatch(setBandAlbums(bandId, response.data.albums)))
 			.catch(error => console.log(error));
 	}
 }
