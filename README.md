@@ -1,24 +1,24 @@
-# The project (in development)
-The main idea of thi project is to create an application which works with relational database building CRUDs, simple and complex forms, explore React features and possibilities, and also a login/logout feature based on an anthorization middleware in the API backend layer to access all the stuff.
+### (In development phase)
 
-- The **client-side** is a React + Redux app based.
-- The **server-side** is built in NodeJS (Express) and works like an API server.
+# The project summary
+The main idea of this project is to create an application which works with relational database though NodeJS API services exploring React features and possibilities.
 
-The Passport based authorization middleware will intercept all requests, verify their data if necessary and proceed with the authorization or not, depending on it's logic.
+We are building a simple login/logout feature by a HOC (High Order Component) in React-side that calls an anthorization middleware in the API backend, as a layer, that authorizes the user to access all the stuff if everything is OK.
 
+>The **client-side** is a React + Redux app based.
+>The **server-side** is built in NodeJS (Express) and works like an API server.
 >This application uses Sequelize ORM to manage relational database and maintain it's data.
+>The [Passport] is a package provided by npm packages collection that works as an authentication middleware in Express NodeJS apps.(https://www.npmjs.com/package/passport)
 
 If you have some suggestion, please let me know about it!
 
-## Server-Side
+### Server-Side
 Located in the "/server/" folder, here becomes the NodeJS Express application. 
-
 Use ```npm install``` to install all dependencies and ```npm start``` to run the app.
 
-## Client-Side
+### Client-Side
 Located in the "/client/" folder, here is the React app. Built with the package "create-react-app" and working with Redux.
-
 Use ```npm install``` to install all dependencies and ```npm start``` to run the app.
 
-## Copyright
+### Copyright
 Rodrigo Quiñones Pichioli, since Mar/02/2018
