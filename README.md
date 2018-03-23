@@ -1,8 +1,6 @@
-### =========================================================
-### In development stage
-### =========================================================
+#### ======== In development stage ========================================
 
-### The project summary
+#### Summary
 The main idea of this project is to create an application which works with relational database though NodeJS API services exploring React features and possibilities.
 
 We are building a simple login/logout feature by a HOC (High Order Component) in React-side that calls an anthorization middleware in the API backend, as a layer, that authorizes the user to access all the stuff if everything is OK.
