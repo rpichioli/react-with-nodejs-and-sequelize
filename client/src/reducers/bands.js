@@ -8,6 +8,8 @@ import {
 } from '../actions/bands';
 
 export default function bands(state = [], action = {}) {
+	//console.log('entered reducer');
+	//console.log(state);
 	switch (action.type) {
 		case SET_BANDS:
 			return action.bands;
@@ -27,15 +29,17 @@ export default function bands(state = [], action = {}) {
 				return item;
 			});
 		case BAND_DELETED:
-			return state.bands.filter(item => item.id !== action.bandId);
+			return state.filter(item => item.id !== action.bandId);
 		case SET_BAND_ALBUMS:
+			console.groupCollapsed("reducer");
+			console.log(state);
 			return state.map(item => {
-				if (item.id === action.bandId) {
-					item.albums = action.albums;
-					return item.albums;
-				}
+				item.albums = [];
+				if (item.id === Number(action.bandId)) item.albums = action.albums;
+				console.log(item);
 				return item;
-			})
+			});
+			console.groupEnd();
 		default:
 			return state;
 	}

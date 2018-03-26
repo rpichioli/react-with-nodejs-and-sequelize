@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-import { fetchBandAlbums } from '../actions/albums';
+import { fetchBandAlbums } from '../../actions/bands';
 import AlbumsList from './AlbumsList';
 
 class AlbumsListPage extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	componentDidMount() {
 		if (typeof this.props.match.params.id !== "undefined") {
 			this.props.fetchBandAlbums(this.props.match.params.id);
@@ -17,23 +14,26 @@ class AlbumsListPage extends React.Component {
 	}
 
 	render() {
-		const band = this.props.band;
+		console.groupCollapsed("AlbumsListPage");
+		console.log(this.props.band);
+		console.groupEnd();
 		return (
 			<div className="ui container">
-				<h1>{band.title}</h1>
-				<h2>Albums List</h2>
-				<AlbumsList band={band} />
+				{
+					!this.props.band ? //|| !this.props.band.albums ?
+						<Redirect to="/bands" /> :
+						<div>
+							<h1>{this.props.band.title}</h1>
+							<AlbumsList band={this.props.band} />
+						</div>
+				}
 			</div>
 		);
 	}
 }
 
 function mapStateToProps(state, props) {
-	if (typeof props.match.params.id !== "undefined") {
-		return { band: state.bands.filter(item => item.id === props.match.params.id) };
-	} else {
-		return { band: null }
-	}
+	return { band: state.bands.filter(item => item.id == Number(props.match.params.id))[0] };
 }
 
 export default connect(mapStateToProps, { fetchBandAlbums })(AlbumsListPage);

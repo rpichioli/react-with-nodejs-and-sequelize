@@ -14,7 +14,7 @@ export default function BandsList({ bands }) {
 						<td>{band.title}</td>
 						<td>{band.year}</td>
 						<td style={{ textAlign: "right" }}>
-							<NavLink exact to={`/band/albums/${band.id}`} title="Edit">
+							<NavLink exact to={`/band/${band.id}/albums/`} title="More details">
 								<i className="icon info"></i>
 							</NavLink>
 							<NavLink exact to={`/band/${band.id}`} title="Edit">
@@ -37,7 +37,7 @@ export default function BandsList({ bands }) {
 					<th width="7%">ID</th>
 					<th>Title</th>
 					<th width="7%">Year</th>
-					<th width="7%"></th>
+					<th width="10%"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -47,7 +47,7 @@ export default function BandsList({ bands }) {
 	);
 
 	const emptyMessage = (
-		<p>There is no bands yet in yout collection</p>
+		<p>There is no bands yet in your collection</p>
 	);
 
 	return (
