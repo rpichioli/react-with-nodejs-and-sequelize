@@ -23,6 +23,8 @@ export function bandDeleted(bandId) {
 	return { type: BAND_DELETED, bandId };
 }
 export function setBandAlbums(bandId, albums) {
+	//console.log('dispatch');
+	//console.log(albums[0]);
 	return { type: SET_BAND_ALBUMS, bandId, albums };
 }
 
@@ -64,9 +66,9 @@ export function deleteBand(band) {
 	}
 }
 
-export default function fetchBandAlbums(bandId) {
+export function fetchBandAlbums(bandId) {
 	return dispatch => {
-		return axios.get(`api/bands/${bandId}/albums`)
+		return axios.get(`/api/bands/${bandId}/albums`)
 			.then(response => dispatch(setBandAlbums(bandId, response.data.albums)))
 			.catch(error => console.log(error));
 	}

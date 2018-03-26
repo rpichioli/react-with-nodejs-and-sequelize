@@ -2,37 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AlbumCard from './AlbumCard';
 
-class AlbumsList extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+export default function AlbumsList({ band }) {
+	console.log(band);
+	console.log(band.albums);
+	console.log(band.title);
+	console.log(band.id);
 
-	render() {
-		const band = this.props.band;
-		const albumCards = null;
+	const albumCards = (
+		<div className="ui four cards">
+			{
+				!!band.albums && band.albums.map((album) => {
+					return (<AlbumCard key={band.id} band={band} album={album} />);
+				})
+			}
+		</div>
+	);
 
-		if (band.albums.length > 0) {
-			albumCards = band.albums.map((album, i) => {
-				return (
-					<AlbumCard band={band} album={album} />
-				);
-			});
-		}
+	const emptyMessage = (
+		<p>There is no albums registered yet.</p>
+	);
 
-		const emptyMessage = (
-			<p>There is no bands yet in yout collection</p>
-		);
-
-		return (
-			<div>
-				{ !!albumCards ? albumCards : emptyMessage }
-			</div>
-		);
-	}
+	return (
+		<div>
+			{ !!band.albums && band.albums.length === 0 ? emptyMessage : albumCards }
+		</div>
+	);
 }
 
 AlbumsList.propTypes = {
 	band: PropTypes.object.isRequired
 }
-
-export default AlbumsList

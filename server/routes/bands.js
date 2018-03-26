@@ -45,6 +45,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/:id/albums', (req, res) => {
+	console.log(req.params.id);
 	models.album.findAll({ where: { band_id: req.params.id } }).then(albums => {
 		if (albums && Object.keys(albums).length > 0)
 			res.json({ albums });
