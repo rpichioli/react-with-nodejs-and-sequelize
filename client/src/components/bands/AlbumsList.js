@@ -21,7 +21,7 @@ export default function AlbumsList({ band }) {
 	);
 
 	const emptyMessage = (
-		<p>There is no albums registered yet.</p>
+		<div class="ui info message">There is no albums registered yet.</div>
 	);
 
 	return (

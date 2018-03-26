@@ -3,11 +3,11 @@
 }
 
 .masthead.segment {
-	min-height: 400px;
+	/* min-height: 400px; */
 	padding: 1em 0em;
 	margin-top: -3em !important;
 }
-.masthead .logo.item img {
+/* .masthead .logo.item img {
 	margin-right: 1em;
 }
 .masthead .ui.menu .ui.button {
@@ -22,7 +22,7 @@
 .masthead h2 {
 	font-size: 1.2em;
 	font-weight: normal;
-}
+} */
 
 .App-logo {
 	animation: App-logo-spin infinite 20s linear;

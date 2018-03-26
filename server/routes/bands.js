@@ -10,7 +10,7 @@ const router = express.Router();
  * Get all bands
  */
 router.get('/', (req, res) => {
-	models.band.findAll().then(bands => {
+	models.band.findAll({ include: [models.album] }).then(bands => {
 		if (bands && Object.keys(bands).length > 0)
 			res.json({ bands });
 		else
@@ -36,22 +36,12 @@ router.get('/:id', (req, res) => {
 
 	if (error) res.status(400).json({ success: false, error: error, data: {} });
 
-	models.band.findById(req.params.id).then(data => {
+	models.band.findById(req.params.id, { include: [models.album] }).then(data => {
 		if (data)
 			res.json({ success: true, band: data });
 		else
 			res.status(400).json({ success: false, error: "Band not found.", band: {} });
 	})
-});
-
-router.get('/:id/albums', (req, res) => {
-	console.log(req.params.id);
-	models.album.findAll({ where: { band_id: req.params.id } }).then(albums => {
-		if (albums && Object.keys(albums).length > 0)
-			res.json({ albums });
-		else
-			res.status(400).json({ error: "Any albums found for the requested band." });
-	});
 });
 
 /**

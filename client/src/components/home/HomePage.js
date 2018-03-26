@@ -4,23 +4,22 @@ class HomePage extends React.Component {
 	render() {
 		return (
 			<div>
-				<div class="ui inverted vertical masthead center aligned segment">
-					<div class="ui container">
-						<div className="ui text container">
+				<div class="ui inverted vertical masthead aligned segment">
+						<div className="ui container">
 							<h1 className="ui inverted header">React with Redux and Sequelize</h1>
-							<h2>Check the code in Github</h2>
+							<p>Check the code in Github</p>
 							<button className="ui github button primary" onClick="window.location='https://github.com/rpichioli/react-with-sequelize-and-passport'">
 								<i className="github icon"></i>
 								Let me in!
 							</button>
-						</div>
 					</div>
 				</div>
 
 				<div class="ui vertical stripe segment">
 					<div class="ui middle aligned stackable grid container">
 						<div class="row">
-							<div class="eight wide column">
+							<div class="wide column">
+								{/* eight */}
 								<h3 class="ui header">Server-Side</h3>
 								<p>Located in the "/server/" folder, here becomes the NodeJS Express application.</p>
 								<p>Use npm install to install all dependencies and npm start to run the app.</p>
@@ -28,14 +27,14 @@ class HomePage extends React.Component {
 								<p>Located in the "/client/" folder, here is the React app. Built with the package "create-react-app" and working with Redux.</p>
 								<p>Use npm install to install all dependencies and npm start to run the app.</p>
 							</div>
-							<div class="six wide right floated column">
+							{/* <div class="six wide right floated column">
 								<img src="https://raw.githubusercontent.com/rexxars/react-hexagon/HEAD/logo/react-hexagon.png" class="ui large image" alt="atom" />
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</div>
 
-				<div className="ui vertical stripe quote segment">
+				{/*<div className="ui vertical stripe quote segment">
 					<div className="ui equal width stackable internally celled grid">
 						<div className="center aligned row">
 							<div className="column">
@@ -80,7 +79,7 @@ class HomePage extends React.Component {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		);
 	}
