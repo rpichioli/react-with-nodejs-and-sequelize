@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import AlbumCard from './AlbumCard';
 
 export default function AlbumsList({ band }) {
+	console.group("AlbumsList");
 	console.log(band);
 	console.log(band.albums);
 	console.log(band.title);
 	console.log(band.id);
+	console.groupEnd();
 
 	const albumCards = (
 		<div className="ui four cards">
@@ -24,7 +26,7 @@ export default function AlbumsList({ band }) {
 
 	return (
 		<div>
-			{ !!band.albums && band.albums.length === 0 ? emptyMessage : albumCards }
+			{ !!band.albums && band.albums.length > 0 ? albumCards : emptyMessage }
 		</div>
 	);
 }

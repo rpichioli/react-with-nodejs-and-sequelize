@@ -31,13 +31,15 @@ export default function bands(state = [], action = {}) {
 		case BAND_DELETED:
 			return state.filter(item => item.id !== action.bandId);
 		case SET_BAND_ALBUMS:
-			//console.log(state);
+			console.groupCollapsed("reducer");
+			console.log(state);
 			return state.map(item => {
 				item.albums = [];
 				if (item.id === Number(action.bandId)) item.albums = action.albums;
-				console.info(item);
+				console.log(item);
 				return item;
-			})
+			});
+			console.groupEnd();
 		default:
 			return state;
 	}

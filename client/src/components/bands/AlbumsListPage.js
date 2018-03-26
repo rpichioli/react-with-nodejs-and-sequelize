@@ -14,11 +14,13 @@ class AlbumsListPage extends React.Component {
 	}
 
 	render() {
+		console.groupCollapsed("AlbumsListPage");
 		console.log(this.props.band);
+		console.groupEnd();
 		return (
 			<div className="ui container">
 				{
-					!this.props.band ?
+					!this.props.band ? //|| !this.props.band.albums ?
 						<Redirect to="/bands" /> :
 						<div>
 							<h1>{this.props.band.title}</h1>
@@ -31,14 +33,7 @@ class AlbumsListPage extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-	//console.log("mapping state to props");
-	//console.log(state);
-	//console.log(props);
-	//if (typeof props.match.params.id !== "undefined") {
-		return { band: state.bands.filter(item => item.id == Number(props.match.params.id))[0] };
-	// } else {
-	// 	return { band: null }
-	// }
+	return { band: state.bands.filter(item => item.id == Number(props.match.params.id))[0] };
 }
 
 export default connect(mapStateToProps, { fetchBandAlbums })(AlbumsListPage);
