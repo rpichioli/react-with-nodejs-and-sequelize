@@ -10,7 +10,10 @@ const router = express.Router();
  * Get all bands
  */
 router.get('/', (req, res) => {
-	models.band.findAll({ include: [models.album] }).then(bands => {
+	models.band.findAll({
+		include: [models.album],
+		order: [[models.album, 'year', 'ASC']]
+	}).then(bands => {
 		if (bands && Object.keys(bands).length > 0)
 			res.json({ bands });
 		else
@@ -25,18 +28,17 @@ router.get('/:id', (req, res) => {
 	let error = null;
 	let id = req.params.id || null;
 
-	if (!id)
-		error = "Invalid request.";
-	else if (Validator.isEmpty(id))
-		error = "Invalid request.";
-	else if (!Validator.isInt(id))
-		error = "Value must be integer.";
-	else if (id <= 0)
-		error = "Invalid value.";
+	if (!id) error = "Invalid request.";
+	else if (Validator.isEmpty(id)) error = "Invalid request.";
+	else if (!Validator.isInt(id)) error = "Value must be integer.";
+	else if (id <= 0) error = "Invalid value.";
 
 	if (error) res.status(400).json({ success: false, error: error, data: {} });
 
-	models.band.findById(req.params.id, { include: [models.album] }).then(data => {
+	models.band.findById(req.params.id, {
+		include: [models.album],
+		order: [[models.album, 'year', 'ASC']]
+	}).then(data => {
 		if (data)
 			res.json({ success: true, band: data });
 		else

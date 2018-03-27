@@ -14,13 +14,13 @@ export default function BandsList({ bands }) {
 						<td>{band.title}</td>
 						<td>{band.year}</td>
 						<td style={{ textAlign: "right" }}>
-							<NavLink exact to={`/band/${band.id}/albums/`} title="More details">
-								<i className="icon eye"></i>
+							<NavLink className="ui button compact circular icon" to={`/band/${band.id}/albums/`} title="More details">
+								<i className="icon eye blue"></i>
 							</NavLink>
-							<NavLink exact to={`/band/${band.id}`} title="Edit">
+							<NavLink className="ui button compact circular icon" to={`/band/${band.id}`} title="Edit">
 								<i className="icon edit orange"></i>
 							</NavLink>
-							<NavLink exact to={`/band/delete/${band.id}`} title="Delete">
+							<NavLink className="ui button compact circular icon" to={`/band/delete/${band.id}`} title="Delete">
 								<i className="icon trash red"></i>
 							</NavLink>
 						</td>
@@ -37,7 +37,7 @@ export default function BandsList({ bands }) {
 					<th width="7%">ID</th>
 					<th>Title</th>
 					<th width="7%">Year</th>
-					<th width="10%"></th>
+					<th width="15%"></th>
 				</tr>
 			</thead>
 			<tbody>
