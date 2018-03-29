@@ -10,6 +10,7 @@ class BandForm extends React.Component {
 			id: '',
 			title: '',
 			year: '',
+			description: '',
 			errors: {},
 			loading: false
 		}
@@ -19,29 +20,21 @@ class BandForm extends React.Component {
 	}
 
 	componentDidMount() {
-		// console.log('form componentDidMount');
-		// console.log(this.props);
 		this.setState({
 			id: (this.props.band) ? this.props.band.id : '',
 			title: (this.props.band) ? this.props.band.title : '',
-			year: (this.props.band) ? this.props.band.year : ''
+			year: (this.props.band) ? this.props.band.year : '',
+			description: (this.props.description) ? this.props.band.description : ''
 		});
 	}
 
 	componentWillReceiveProps = (nextProps) => {
-		// console.log('form componentWillReceiveProps');
-		// console.log(nextProps);
 		this.setState({
 			id: nextProps.band.id,
 			title: nextProps.band.title,
-			year: nextProps.band.year
+			year: nextProps.band.year,
+			description: nextProps.band.description
 		});
-	}
-
-	focusFieldOnError(errors) {
-		// errors.map(item => {
-		// 	if (item && item.)
-		// })
 	}
 
 	handleChange(e) {
@@ -55,22 +48,20 @@ class BandForm extends React.Component {
 		let errors = {};
 		if (this.state.title === '') errors.title = "This field can't be empty";
 		if (this.state.year === '') errors.year = "This field can't be empty";
+
 		// Fill the error state
 		this.setState({ errors });
-		// Focus 1st error field
-		//if (Object.keys(errors).count > 0) focusFieldOnError(errors);
 		// -------------------------------------------------------------
 
 		const isValid = Object.keys(errors).length === 0;
 
 		if (isValid) {
-			const { id, title, year } = this.state;
+			const { id, title, year, description } = this.state;
 
 			this.setState({ loading: true });
-			console.log(this.props);
-			this.props.saveBand({ id, title, year });
+			this.props.saveBand({ id, title, year, description });
 			// .catch((err) => {
-			// 	err.response.json().then(({errors}) => {
+			// 	err.response.json().then(({ errors }) => {
 			// 		this.setState({ errors, loading: false })
 			// 	})
 			// });
@@ -93,10 +84,10 @@ class BandForm extends React.Component {
 						className="ui input"
 						placeholder="The name of the band"
 						onChange={this.handleChange}
-						ref={(input) => { this.titleInput = input }}
 					/>
 					<span>{this.state.errors.title}</span>
 				</div>
+
 				<div className={classnames("field", { error: !!this.state.errors.year })}>
 					<label htmlFor="year">Year</label>
 					<input
@@ -105,9 +96,20 @@ class BandForm extends React.Component {
 						className="ui input"
 						placeholder="Foundation year"
 						onChange={this.handleChange}
-						ref={(input) => { this.yearInput = input }}
 					/>
 					<span>{this.state.errors.year}</span>
+				</div>
+
+				<div className={classnames("field", { error: !!this.state.errors.description })}>
+					<label htmlFor="description">Description</label>
+					<textarea
+						id="description" name="description"
+						className="ui input"
+						placeholder="The band summary"
+						onChange={this.handleChange}
+						value={this.state.description}
+					></textarea>
+					<span>{this.state.errors.description}</span>
 				</div>
 				<div className="field">
 					<button type="submit" className="ui primary button">Save</button>

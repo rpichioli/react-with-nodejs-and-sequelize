@@ -12,16 +12,17 @@ export default function BandsList({ bands }) {
 					<tr>
 						<td>{band.id}</td>
 						<td>{band.title}</td>
-						<td>{band.year}</td>
+						<td style={{ textAlign: "center" }}>{band.year}</td>
+						<td style={{ textAlign: "center" }}>{band.albums.length}</td>
 						<td style={{ textAlign: "right" }}>
-							<NavLink className="ui button compact circular icon" to={`/band/${band.id}/albums/`} title="More details">
-								<i className="icon eye blue"></i>
+							<NavLink className="ui button compact icon small black" to={`/band/${band.id}/albums/`} title="More details">
+								<i className="icon eye"></i>
 							</NavLink>
-							<NavLink className="ui button compact circular icon" to={`/band/${band.id}`} title="Edit">
-								<i className="icon edit orange"></i>
+							<NavLink className="ui button compact icon small blue" to={`/band/${band.id}`} title="Edit">
+								<i className="icon edit"></i>
 							</NavLink>
-							<NavLink className="ui button compact circular icon" to={`/band/delete/${band.id}`} title="Delete">
-								<i className="icon trash red"></i>
+							<NavLink className="ui button compact icon small red" to={`/band/delete/${band.id}`} title="Delete">
+								<i className="icon trash"></i>
 							</NavLink>
 						</td>
 					</tr>
@@ -31,12 +32,13 @@ export default function BandsList({ bands }) {
 	}
 
 	const grid = (
-		<table className="ui striped selectable compact table">
+		<table className="ui striped selectable compact table single line">
 			<thead>
 				<tr>
 					<th width="7%">ID</th>
 					<th>Title</th>
-					<th width="7%">Year</th>
+					<th width="7%" style={{ textAlign: "center" }}>Year</th>
+					<th width="5%" style={{ textAlign: "center" }}>Albums</th>
 					<th width="15%"></th>
 				</tr>
 			</thead>

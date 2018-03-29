@@ -44,16 +44,16 @@ export function fetchBand(id) {
 }
 export function addBand(band) {
 	return dispatch => {
-		let { title, year } = band;
-		return axios.post('/api/bands', { title, year })
+		let { title, year, description } = band;
+		return axios.post('/api/bands', { title, year, description })
 			.then(response => dispatch(bandSaved(response.data.band)))
 			.catch(error => console.log(error));
 	}
 }
 export function updateBand(band) {
 	return dispatch => {
-		let { id, title, year } = band;
-		return axios.put(`/api/bands/${id}`, { id, title, year })
+		let { id, title, year, description } = band;
+		return axios.put(`/api/bands/${id}`, { id, title, year, description })
 			.then(response => dispatch(bandSaved(response.data.band)))
 			.catch(error => console.log(error));
 	}

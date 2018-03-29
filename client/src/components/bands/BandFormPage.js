@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 
 import BandForm from './BandForm';
 import { fetchBand, updateBand, addBand } from '../../actions/bands';
@@ -26,11 +26,11 @@ class BandFormPage extends React.Component {
 	/**
 	 * Function that decides what action to call based on received params, sent as a property to child component
 	 */
-	saveBand = ({ id, title, year }) => {
+	saveBand = ({ id, title, year, description }) => {
 		if (!id)
-			this.props.addBand({ title, year }).then(() => this.setState({ redirect: true }));
+			this.props.addBand({ title, year, description }).then(() => this.setState({ redirect: true }));
 		else
-			this.props.updateBand({ id, title, year }).then(() => this.setState({ redirect: true }));
+			this.props.updateBand({ id, title, year, description }).then(() => this.setState({ redirect: true }));
 	}
 
 	render() {
@@ -42,6 +42,8 @@ class BandFormPage extends React.Component {
 						<Redirect to="/bands" /> :
 						<div className="ui container">
 							<h1>Band Registration</h1>
+							<NavLink exact to="/bands/" className="ui button">Back to bands list</NavLink>
+							<br /><br />
 							<BandForm band={this.props.band} saveBand={this.saveBand} />
 						</div>
 				}

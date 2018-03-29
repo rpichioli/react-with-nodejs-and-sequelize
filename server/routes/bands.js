@@ -50,10 +50,10 @@ router.get('/:id', (req, res) => {
  * Insert new band
  */
 router.post('/', (req, res) => {
-	let { title, year } = req.body;
+	let { title, year, description } = req.body;
 	console.log(req.body);
 	models.band
-		.build({ title: title, year: year })
+		.build({ title, year, description })
 		.save()
 		.then(() => res.json({ success: true }))
 		.catch((err) => res.status(400).json({ errors: { globals: err } }));
@@ -63,9 +63,9 @@ router.post('/', (req, res) => {
  * Update band by ID
  */
 router.put('/:id', (req, res) => {
-	let { id, title, year } = req.body;
+	let { id, title, year, description } = req.body;
 	models.band
-		.update({ title, year }, { where: { id } })
+		.update({ title, year, description }, { where: { id } })
 		.then(() => res.json({ success: true }))
 		.catch((err) => res.status(400).json({ errors: { globals: "Ops, something wrong happened.." } }));
 });
