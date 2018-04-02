@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 
 class BandForm extends React.Component {
@@ -114,6 +115,7 @@ class BandForm extends React.Component {
 				<div className="field">
 					<button type="submit" className="ui primary button">Save</button>
 				</div>
+				<NavLink exact to={`/bands/${this.props.album.band_id}/albums`} className="ui button">Back</NavLink>
 			</form>
 		);
 	}

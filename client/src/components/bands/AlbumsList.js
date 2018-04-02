@@ -28,7 +28,7 @@ export default function AlbumsList({ band }) {
 	return (
 		<div>
 			<NavLink exact to="/bands/" className="ui button">Back to bands list</NavLink>
-			<NavLink exact to={`/bands/${band.id}/albums/new`} className="ui button primary">Add New</NavLink>
+			<NavLink exact to={`/band/${band.id}/album/new`} className="ui button primary">Add New</NavLink>
 			<br /><br />
 			{ !!band.albums && band.albums.length > 0 ? albumCards : emptyMessage }
 		</div>
