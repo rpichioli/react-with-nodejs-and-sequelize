@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import swagger from 'swagger-express';
 import bands from './routes/bands';
 import albums from './routes/albums';
 import models from './models';
@@ -9,6 +10,18 @@ const app = express();
 // Body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+// Swagger
+// app.use(swagger.init(app, {
+// 	apiVersion: '1.0',
+//     swaggerVersion: '1.0',
+//     swaggerURL: '/swagger',
+//     swaggerJSON: '/api-docs.json',
+//     swaggerUI: './public/swagger/',
+//     basePath: 'http://localhost:3000',
+//     apis: ['./api.js', './api.yml'],
+//     middleware: function(req, res) {}
+// }));
 
 // Routes
 app.use('/api/bands/', bands);
