@@ -58,7 +58,6 @@ class BandForm extends React.Component {
 
 		if (isValid) {
 			const { id, title, year, description } = this.state;
-
 			this.setState({ loading: true });
 			this.props.saveBand({ id, title, year, description });
 			// .catch((err) => {

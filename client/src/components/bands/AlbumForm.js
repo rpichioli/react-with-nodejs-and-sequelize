@@ -1,24 +1,45 @@
 import React from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 class AlbumForm extends React.Component {
 	state = {
 		id: '',
-		band_id: '',
 		title: '',
-		year: '',
-		cover: '',
 		description: '',
+		cover: '',
+		year: '',
 		errors: {},
 		loading: false
 	}
 
-	handleSubmit(e) {
-		e.preventDefault();
+	componentDidMount = () => {
+		const album = this.props.album;
+		this.setState({
+			id: album ? album.id : '',
+			title: album ? album.title : '',
+			description: album ? album.description : '',
+			cover: album ? album.cover : '',
+			year: album ? album.year : ''
+		})
 	}
 
-	handleChange(e) {
+	componentWillReceiveProps = (nextProps) => {
+		this.setState({
+			id: nextProps.id,
+			title: nextProps.title,
+			description: nextProps.description,
+			cover: nextProps.cover,
+			year: nextProps.year
+		})
+	}
+
+	handleChange = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();
 
 		// Validation --------------------------------------------------
 		let errors = {};
@@ -29,6 +50,12 @@ class AlbumForm extends React.Component {
 		// Fill the error state
 		this.setState({ errors });
 		// -------------------------------------------------------------
+
+		// Build the valid logic key by errors object
+		if (Object.keys(errors).length === 0) {
+			this.setState({ loading: true }); // Set up the loading
+			this.props.saveAlbum(this.state); // Send the state to the parent component save function
+		}
 	}
 
 	render() {
@@ -49,6 +76,7 @@ class AlbumForm extends React.Component {
 					/>
 					<span>{this.state.errors.title}</span>
 				</div>
+
 				<div className={classnames("field", { error: !!this.state.errors.year })}>
 					<label htmlFor="year">Year</label>
 					<input
@@ -60,6 +88,19 @@ class AlbumForm extends React.Component {
 					/>
 					<span>{this.state.errors.title}</span>
 				</div>
+
+				<div className={classnames("field", { error: !!this.state.errors.description })}>
+					<label htmlFor="description">Description</label>
+					<textarea
+						id="description" name="description"
+						className="ui input"
+						placeholder="The band summary"
+						onChange={this.handleChange}
+						value={this.state.description}
+					></textarea>
+					<span>{this.state.errors.description}</span>
+				</div>
+
 				<div className={classnames("field", { error: !!this.state.errors.cover })}>
 					<label htmlFor="cover">Cover URL</label>
 					<input
@@ -71,12 +112,22 @@ class AlbumForm extends React.Component {
 					/>
 					<span>{this.state.errors.title}</span>
 				</div>
+
+				<div className="field">
+					{this.state.cover !== '' && <img src={this.state.cover} alt="cover" className="ui small bordered image" />}
+				</div>
+
 				<div className="field">
 					<button type="submit" className="ui primary button">Save</button>
 				</div>
 			</form>
 		)
 	}
+}
+
+AlbumForm.propTypes = {
+	album: PropTypes.object.isRequired,
+	saveAlbum: PropTypes.func.isRequired
 }
 
 export default AlbumForm;

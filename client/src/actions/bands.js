@@ -23,8 +23,6 @@ export function bandDeleted(bandId) {
 	return { type: BAND_DELETED, bandId };
 }
 export function setBandAlbums(bandId, albums) {
-	//console.log('dispatch');
-	//console.log(albums[0]);
 	return { type: SET_BAND_ALBUMS, bandId, albums };
 }
 
@@ -66,6 +64,11 @@ export function deleteBand(band) {
 	}
 }
 
+/**
+ * @deprecated Using now fetchBand() to fill all the albums as children of each band
+ * @description Get all albums related to the received band ID
+ * @param {integer} bandId - The band ID
+ */
 export function fetchBandAlbums(bandId) {
 	return dispatch => {
 		return axios.get(`/api/bands/${bandId}/albums`)
