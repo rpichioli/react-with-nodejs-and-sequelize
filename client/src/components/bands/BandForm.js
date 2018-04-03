@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 
+/**
+ * @description Band form used to add and edit. We bind state and events binding to the component by constructor this time.
+ * @extends React
+ */
 class BandForm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -44,19 +48,17 @@ class BandForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-
-		// Validation --------------------------------------------------
 		let errors = {};
+
+		// Validation
 		if (this.state.title === '') errors.title = "This field can't be empty";
 		if (this.state.year === '') errors.year = "This field can't be empty";
 
-		// Fill the error state
+		// Fill the errors object state
 		this.setState({ errors });
-		// -------------------------------------------------------------
 
-		const isValid = Object.keys(errors).length === 0;
-
-		if (isValid) {
+		// Proceed if everything is OK
+		if (Object.keys(errors).length === 0) {
 			const { id, title, year, description } = this.state;
 			this.setState({ loading: true });
 			this.props.saveBand({ id, title, year, description });

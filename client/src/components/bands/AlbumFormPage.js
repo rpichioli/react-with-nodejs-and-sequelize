@@ -1,31 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { addAlbum, updateAlbum } from '../../actions/bands';
+import { addAlbum, updateAlbum } from '../../actions/albums';
 import AlbumForm from './AlbumForm';
 
 class AlbumFormPage extends React.Component {
 	state = { redirect: false };
 
-	componentDidMount() {
-		// if (typeof this.props.match.params.band_id !== "undefined") {
-		// 	this.props.fetchAlbum(this.props.match.params.band_id);
-		// }
-	}
-
-	saveBand = ({ title, description, year, cover }) => {
-		const { band_id, id } = this.props.album;
+	saveAlbum = ({ id, title, year, description, cover, band_id }) => {
 		if (!id)
-			this.props.addAlbum({ band_id, title, description, year, cover }).then(() => this.setState({ redirect: true }));
+			this.props.addAlbum({ title, year, description, cover, band_id }).then(() => this.setState({ redirect: true }));
 		else
-			this.props.updateAlbum({ id, band_id, title, description, year, cover }).then(() => this.setState({ redirect: true }));
+			this.props.updateAlbum({ id, title, year, description, cover, band_id }).then(() => this.setState({ redirect: true }));
 	}
 
 	render() {
 		return (
-			<div className="ui container">
-				<h1>Album Registration</h1>
-				<AlbumForm album={this.props.album} />
+			<div>
+				{
+					// Redirect if some action has worked succesfully, render if not
+					this.state.redirect ?
+						<Redirect to={`/band/${this.props.album.band_id}/albums`} /> :
+						<div className="ui container">
+							<h1>Album Registration</h1>
+							<AlbumForm album={this.props.album} saveAlbum={this.saveAlbum} />
+						</div>
+				}
 			</div>
 		)
 	}
@@ -37,9 +38,11 @@ AlbumFormPage.propTypes = {
 };
 
 function mapStateToProps(state, props) {
+	console.log(state);
+	console.log(props);
 	if (props.match.params && props.match.params.id > 0) {
 		const band = state.bands.find(item => item.id == props.match.params.id);
-		const album = band ? band.albums.find(item => item.band_id == props.match.params.band_id) : null;
+		const album = band ? band.albums.find(item => item.id == props.match.params.album_id) : null;
 		return { album: album };
 	}
 

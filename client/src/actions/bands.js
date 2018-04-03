@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+// -----------------------------------------------------------
+// Action types
+// -----------------------------------------------------------
 export const SET_BANDS = 'SET_BANDS';
 export const BAND_FETCHED = 'BAND_FETCHED';
 export const BAND_SAVED = 'BAND_SAVED';
@@ -7,6 +10,9 @@ export const BAND_UPDATED = 'BAND_UPDATED';
 export const BAND_DELETED = 'BAND_DELETED';
 export const SET_BAND_ALBUMS = 'SET_BAND_ALBUMS';
 
+// -----------------------------------------------------------
+// Actions to be dispatched to the reducer
+// -----------------------------------------------------------
 export function setBands(bands) {
 	return { type: SET_BANDS, bands };
 }
@@ -26,6 +32,9 @@ export function setBandAlbums(bandId, albums) {
 	return { type: SET_BAND_ALBUMS, bandId, albums };
 }
 
+// -----------------------------------------------------------
+// Business rules before dispatch
+// -----------------------------------------------------------
 export function fetchBands() {
 	return dispatch => {
 		return axios.get('/api/bands')
@@ -52,14 +61,14 @@ export function updateBand(band) {
 	return dispatch => {
 		let { id, title, year, description } = band;
 		return axios.put(`/api/bands/${id}`, { id, title, year, description })
-			.then(response => dispatch(bandSaved(response.data.band)))
+			.then(response => dispatch(bandUpdated(response.data.band)))
 			.catch(error => console.log(error));
 	}
 }
 export function deleteBand(band) {
 	return dispatch => {
 		return axios.delete(`/api/bands/${band.id}`)
-			.then(response => dispatch(bandSaved(response.data.band)))
+			.then(response => dispatch(bandDeleted(response.data.band)))
 			.catch(error => console.log(error));
 	}
 }

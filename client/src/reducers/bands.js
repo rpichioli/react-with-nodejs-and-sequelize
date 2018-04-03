@@ -6,11 +6,17 @@ import {
 	BAND_DELETED,
 	SET_BAND_ALBUMS
 } from '../actions/bands';
+import {
+	ALBUM_SAVED,
+	ALBUM_UPDATED,
+	ALBUM_DELETED
+} from '../actions/albums';
 
 export default function bands(state = [], action = {}) {
-	//console.log('entered reducer');
-	//console.log(state);
 	switch (action.type) {
+		// ---------------------------------------------------------
+		// Band
+		// ---------------------------------------------------------
 		case SET_BANDS:
 			return action.bands;
 		case BAND_FETCHED:
@@ -31,15 +37,32 @@ export default function bands(state = [], action = {}) {
 		case BAND_DELETED:
 			return state.filter(item => item.id !== action.bandId);
 		case SET_BAND_ALBUMS:
-			console.groupCollapsed("reducer");
-			console.log(state);
 			return state.map(item => {
 				item.albums = [];
 				if (item.id === Number(action.bandId)) item.albums = action.albums;
-				console.log(item);
 				return item;
 			});
-			console.groupEnd();
+		// ---------------------------------------------------------
+		// Album
+		// ---------------------------------------------------------
+		case ALBUM_SAVED:
+			return state.map(item => {
+				if (item.id == action.album.band_id) {
+					item.albums[item.albums.length++] = action.album;
+				}
+				return item;
+			});
+		case ALBUM_UPDATED:
+			
+			return state.map(item => {
+				if (item.id == action.album.band_id) {
+					let album_index = item.albums.findIndex(album => album.id === action.album.id);
+					if (album_index > -1) item.albums[album_index] = action.album;
+				}
+				return item;
+			})
+		case ALBUM_DELETED:
+			return state;
 		default:
 			return state;
 	}

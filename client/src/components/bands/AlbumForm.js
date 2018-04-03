@@ -2,6 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
+/**
+ * @description Album form used to add and edit. This time we will use state and events binding without a constructor.
+ * @extends React
+ */
 class AlbumForm extends React.Component {
 	state = {
 		id: '',
@@ -40,18 +44,17 @@ class AlbumForm extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-
-		// Validation --------------------------------------------------
 		let errors = {};
+
+		// Validation
 		if (this.state.title === '') errors.title = "This field can't be empty";
 		if (this.state.year === '') errors.year = "This field can't be empty";
 		if (this.state.cover === '') errors.cover = "This field can't be empty";
 
-		// Fill the error state
+		// Fill the errors object state
 		this.setState({ errors });
-		// -------------------------------------------------------------
 
-		// Build the valid logic key by errors object
+		// Proceed if everything is OK
 		if (Object.keys(errors).length === 0) {
 			this.setState({ loading: true }); // Set up the loading
 			this.props.saveAlbum(this.state); // Send the state to the parent component save function

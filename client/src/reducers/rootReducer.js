@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
+// Actions
 import bands from './bands';
 
-export default combineReducers({
-	bands
-});
+// Used as a single reducer to create the Redux store
+export default combineReducers({ bands });
