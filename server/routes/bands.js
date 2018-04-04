@@ -1,8 +1,6 @@
 import express from 'express';
 import models from '../models';
 import Validator from 'validator';
-// import { findAll, findByID } from './business/bands';
-// import staticBands from '../data/bands';
 
 const router = express.Router();
 
@@ -51,7 +49,6 @@ router.get('/:id', (req, res) => {
  */
 router.post('/', (req, res) => {
 	let { title, year, description } = req.body;
-	console.log(req.body);
 	models.band
 		.build({ title, year, description })
 		.save()
