@@ -4,12 +4,12 @@ import AlbumCard from './AlbumCard';
 import { NavLink } from 'react-router-dom';
 
 export default function AlbumsList({ band }) {
-	console.group("AlbumsList");
-	console.log(band);
-	console.log(band.albums);
-	console.log(band.title);
-	console.log(band.id);
-	console.groupEnd();
+	// console.group("AlbumsList");
+	// console.log(band);
+	// console.log(band.albums);
+	// console.log(band.title);
+	// console.log(band.id);
+	// console.groupEnd();
 
 	const albumCards = (
 		<div className="ui four cards">

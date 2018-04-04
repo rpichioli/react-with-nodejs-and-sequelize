@@ -55,14 +55,17 @@ export default function bands(state = [], action = {}) {
 		case ALBUM_UPDATED:
 			console.groupCollapsed("ALBUM_UPDATED");
 			return state.map(item => {
+				console.log(action);
+				//console.log(item.id + ' ' + action.album.band_id)
 				if (item.id === Number(action.album.band_id)) {
-					console.log(item.id);
+					console.log(action.album);
 					let album_index = item.albums.findIndex(album => album.id === Number(action.album.id));
 					console.log(album_index);
 					if (album_index > -1) item.albums[album_index] = action.album;
 				}
 				return item;
-			})
+			});
+			console.groupEnd();
 		case ALBUM_DELETED:
 			return state;
 		default:

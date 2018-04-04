@@ -7,16 +7,11 @@ import { fetchBandAlbums } from '../../actions/bands';
 import AlbumsList from './AlbumsList';
 
 class AlbumsListPage extends React.Component {
-	// componentDidMount() {
-	// 	if (typeof this.props.match.params.id !== "undefined") {
-	// 		this.props.fetchBandAlbums(this.props.match.params.id);
-	// 	}
-	// }
 
 	render() {
-		console.groupCollapsed("AlbumsListPage");
-		console.log(this.props.band);
-		console.groupEnd();
+		// console.groupCollapsed("AlbumsListPage");
+		// console.log(this.props.band);
+		// console.groupEnd();
 		return (
 			<div className="ui container">
 				{

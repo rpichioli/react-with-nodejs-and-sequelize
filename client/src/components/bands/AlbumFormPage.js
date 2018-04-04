@@ -38,8 +38,6 @@ AlbumFormPage.propTypes = {
 };
 
 function mapStateToProps(state, props) {
-	console.log(state);
-	console.log(props);
 	if (props.match.params && props.match.params.id > 0) {
 		const band = state.bands.find(item => item.id == props.match.params.id);
 		const album = band ? band.albums.find(item => item.id == props.match.params.album_id) : null;
