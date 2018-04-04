@@ -20,9 +20,9 @@ export default function bands(state = [], action = {}) {
 		case SET_BANDS:
 			return action.bands;
 		case BAND_FETCHED:
-			if (state.findIndex(item => item.id === action.band.id) > -1) {
+			if (state.findIndex(item => item.id === Number(action.band.id)) > -1) {
 				return state.map(item => {
-					if (item.id === action.band.id) return action.band;
+					if (item.id === Number(action.band.id)) return action.band;
 					return item;
 				});
 			} else
@@ -31,11 +31,11 @@ export default function bands(state = [], action = {}) {
 			return [ ...state, action.band ];
 		case BAND_UPDATED:
 			return state.map(item => {
-				if (item.id == action.band.id) return action.band;
+				if (item.id === Number(action.band.id)) return action.band;
 				return item;
 			});
 		case BAND_DELETED:
-			return state.filter(item => item.id !== action.bandId);
+			return state.filter(item => item.id !== Number(action.bandId));
 		case SET_BAND_ALBUMS:
 			return state.map(item => {
 				item.albums = [];
@@ -47,16 +47,18 @@ export default function bands(state = [], action = {}) {
 		// ---------------------------------------------------------
 		case ALBUM_SAVED:
 			return state.map(item => {
-				if (item.id == action.album.band_id) {
+				if (item.id === Number(action.album.band_id)) {
 					item.albums[item.albums.length++] = action.album;
 				}
 				return item;
 			});
 		case ALBUM_UPDATED:
-			
+			console.groupCollapsed("ALBUM_UPDATED");
 			return state.map(item => {
-				if (item.id == action.album.band_id) {
-					let album_index = item.albums.findIndex(album => album.id === action.album.id);
+				if (item.id === Number(action.album.band_id)) {
+					console.log(item.id);
+					let album_index = item.albums.findIndex(album => album.id === Number(action.album.id));
+					console.log(album_index);
 					if (album_index > -1) item.albums[album_index] = action.album;
 				}
 				return item;
