@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { addAlbum, updateAlbum } from '../../actions/albums';
 import AlbumForm from './AlbumForm';
@@ -9,8 +9,8 @@ class AlbumFormPage extends React.Component {
 	state = { redirect: false };
 
 	saveAlbum = ({ id, title, year, description, cover, band_id }) => {
-		if (!id)
-			this.props.addAlbum({ title, year, description, cover, band_id }).then(() => this.setState({ redirect: true }));
+		if (!id || typeof id !== "number")
+			this.props.addAlbum({ title, year, description, cover, band_id: this.props.match.params.id }).then(() => this.setState({ redirect: true }));
 		else
 			this.props.updateAlbum({ id, title, year, description, cover, band_id }).then(() => this.setState({ redirect: true }));
 	}
@@ -24,6 +24,8 @@ class AlbumFormPage extends React.Component {
 						<Redirect to={`/band/${this.props.album.band_id}/albums`} /> :
 						<div className="ui container">
 							<h1>Album Registration</h1>
+							<NavLink exact to={`/band/${this.props.match.params.id}/albums`} className="ui button">Back to albums list</NavLink>
+							<br /><br />
 							<AlbumForm album={this.props.album} saveAlbum={this.saveAlbum} />
 						</div>
 				}
