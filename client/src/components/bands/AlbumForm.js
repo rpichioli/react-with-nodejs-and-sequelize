@@ -13,6 +13,7 @@ class AlbumForm extends React.Component {
 		description: '',
 		cover: '',
 		year: '',
+		band_id: '',
 		errors: {},
 		loading: false
 	}
@@ -24,7 +25,8 @@ class AlbumForm extends React.Component {
 			title: album ? album.title : '',
 			description: album ? album.description : '',
 			cover: album ? album.cover : '',
-			year: album ? album.year : ''
+			year: album ? album.year : '',
+			band_id: album ? album.band_id : ''
 		})
 	}
 
@@ -34,7 +36,8 @@ class AlbumForm extends React.Component {
 			title: nextProps.title,
 			description: nextProps.description,
 			cover: nextProps.cover,
-			year: nextProps.year
+			year: nextProps.year,
+			band_id: nextProps.band_id
 		})
 	}
 
