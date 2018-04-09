@@ -24,11 +24,13 @@ export function albumDeleted(album) {
 // Business rules before dispatch
 // -----------------------------------------------------------
 export function addAlbum(album) {
+	console.log(album);
 	return dispatch => {
 		const { title, year, description, cover, band_id } = album;
-		return axios.post('/api/albums', { title, year, description, cover, band_id })
-			.then(response => dispatch(albumSaved(response.data.album)))
-			.catch(error => console.log(error));
+		dispatch(albumSaved(album));
+		// return axios.post('/api/albums', { title, year, description, cover, band_id })
+		// 	.then(response => dispatch(albumSaved(album)))
+		// 	.catch(error => console.log(error));
 	}
 }
 export function updateAlbum(album) {

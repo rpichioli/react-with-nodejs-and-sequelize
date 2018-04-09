@@ -9,10 +9,11 @@ class AlbumFormPage extends React.Component {
 	state = { redirect: false };
 
 	saveAlbum = ({ id, title, year, description, cover, band_id }) => {
-		if (!id || typeof id !== "number")
-			this.props.addAlbum({ title, year, description, cover, band_id: this.props.match.params.id }).then(() => this.setState({ redirect: true }));
-		else
+		console.log(id);
+		if (id && id > 0)
 			this.props.updateAlbum({ id, title, year, description, cover, band_id }).then(() => this.setState({ redirect: true }));
+		else
+			this.props.addAlbum({ title, year, description, cover, band_id: this.props.match.params.id }).then(() => this.setState({ redirect: true }));
 	}
 
 	render() {

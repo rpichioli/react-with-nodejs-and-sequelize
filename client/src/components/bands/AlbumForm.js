@@ -8,26 +8,14 @@ import PropTypes from 'prop-types';
  */
 class AlbumForm extends React.Component {
 	state = {
-		id: '',
-		title: '',
-		description: '',
-		cover: '',
-		year: '',
-		band_id: '',
+		id: this.props.album ? this.props.album.id : null,
+		title: this.props.album ? this.props.album.title : '',
+		description: this.props.album ? this.props.album.description : '',
+		cover: this.props.album ? this.props.album.cover : '',
+		year: this.props.album ? this.props.album.year : '',
+		band_id: this.props.album ? this.props.album.band_id : '',
 		errors: {},
 		loading: false
-	}
-
-	componentDidMount = () => {
-		const album = this.props.album;
-		this.setState({
-			id: album ? album.id : '',
-			title: album ? album.title : '',
-			description: album ? album.description : '',
-			cover: album ? album.cover : '',
-			year: album ? album.year : '',
-			band_id: album ? album.band_id : ''
-		})
 	}
 
 	componentWillReceiveProps = (nextProps) => {
@@ -66,7 +54,7 @@ class AlbumForm extends React.Component {
 
 	render() {
 		return (
-			<form class={classnames('ui', 'form', { 'loading': this.state.loading })} onSubmit={this.handleSubmit}>
+			<form className={classnames('ui', 'form', { 'loading': this.state.loading })} onSubmit={this.handleSubmit}>
 				<h4 className="ui dividing header">Fill the form below with the album information</h4>
 
 				{!!this.state.errors.global && <div className="ui negative message"><p>{this.state.errors.global}</p></div>}
@@ -74,7 +62,7 @@ class AlbumForm extends React.Component {
 				<div className={classnames("field", { error: !!this.state.errors.title })}>
 					<label htmlFor="title">Title</label>
 					<input
-						type="text" id="title" name="title"
+						id="title" name="title"
 						value={this.state.title}
 						className="ui input"
 						placeholder="The album title"
@@ -86,7 +74,7 @@ class AlbumForm extends React.Component {
 				<div className={classnames("field", { error: !!this.state.errors.year })}>
 					<label htmlFor="year">Year</label>
 					<input
-						type="text" id="year" name="year"
+						id="year" name="year"
 						value={this.state.year}
 						className="ui input"
 						placeholder="The album year"
@@ -99,10 +87,10 @@ class AlbumForm extends React.Component {
 					<label htmlFor="description">Description</label>
 					<textarea
 						id="description" name="description"
+						value={this.state.description}
 						className="ui input"
 						placeholder="The band summary"
 						onChange={this.handleChange}
-						value={this.state.description}
 					></textarea>
 					<span>{this.state.errors.description}</span>
 				</div>
@@ -110,7 +98,7 @@ class AlbumForm extends React.Component {
 				<div className={classnames("field", { error: !!this.state.errors.cover })}>
 					<label htmlFor="cover">Cover URL</label>
 					<input
-						type="text" id="cover" name="cover"
+						id="cover" name="cover"
 						value={this.state.cover}
 						className="ui input"
 						placeholder="The album cover URL"
@@ -132,7 +120,7 @@ class AlbumForm extends React.Component {
 }
 
 AlbumForm.propTypes = {
-	album: PropTypes.object.isRequired,
+	album: PropTypes.object,
 	saveAlbum: PropTypes.func.isRequired
 }
 

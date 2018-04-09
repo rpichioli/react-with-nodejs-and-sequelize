@@ -1,16 +1,6 @@
-import {
-	SET_BANDS,
-	BAND_FETCHED,
-	BAND_SAVED,
-	BAND_UPDATED,
-	BAND_DELETED,
-	SET_BAND_ALBUMS
-} from '../actions/bands';
-import {
-	ALBUM_SAVED,
-	ALBUM_UPDATED,
-	ALBUM_DELETED
-} from '../actions/albums';
+import { SET_BANDS, BAND_FETCHED, BAND_SAVED, BAND_UPDATED, BAND_DELETED, SET_BAND_ALBUMS } from '../actions/bands';
+import { ALBUM_SAVED, ALBUM_UPDATED, ALBUM_DELETED } from '../actions/albums';
+import { sortArrayByField } from '../utils/common';
 
 export default function bands(state = [], action = {}) {
 	switch (action.type) {
@@ -46,15 +36,29 @@ export default function bands(state = [], action = {}) {
 		// Album
 		// ---------------------------------------------------------
 		case ALBUM_SAVED:
-			return unorderedState = state.map(item => {
-				if (item.id === Number(action.album.band_id)) item.albums.push(action.album);
-				item.albums.sort((a, b) => {
-					if (a.year > b.year) return 1;
-					if (a.year < b.year) return -1;
-					return 0; // a must be equal to b
-				});
-				return item;
-			});
+			let band = state.find(item => item.id === Number(action.album.band_id));
+			console.log(band);
+			//console.log(action.album);
+			if (band) {
+				// If we already have albums recorded to the band
+				if (band.albums && band.albums.length > 0) {
+					// Add the album to the band
+					band.albums.push(action.album);
+					// Sort albums by year
+					let albums = band.albums.sort((a, b) => sortArrayByField(a, b, "year"));
+					return state.map(item => {
+						if (item.id === Number(action.album.band_id)) item.albums = albums;
+						return item;
+					});
+				// Just push the album to the empty array
+				} else {
+					return state.map(item => {
+						if (item.id === Number(action.album.band_id)) item.albums.push(action.album);
+						return item;
+					});
+				}
+			} else
+				return state;
 		case ALBUM_UPDATED:
 			return state.map(item => {
 				if (item.id === Number(action.album.band_id)) {

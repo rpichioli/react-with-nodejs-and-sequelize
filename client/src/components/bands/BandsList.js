@@ -9,7 +9,7 @@ export default function BandsList({ bands }) {
 		gridLines = bands.map((band, i) => {
 			if (band) {
 				return (
-					<tr>
+					<tr key={band.id}>
 						<td>{band.id}</td>
 						<td>{band.title}</td>
 						<td style={{ textAlign: "center" }}>{band.year}</td>
@@ -21,7 +21,7 @@ export default function BandsList({ bands }) {
 							<NavLink className="ui button compact icon small blue" to={`/band/${band.id}`} title="Edit">
 								<i className="icon edit"></i>
 							</NavLink>
-							<NavLink className="ui button compact icon small red" to={`/band/delete/${band.id}`} title="Delete">
+							<NavLink className="ui button compact icon small red disabled" to={`/band/delete/${band.id}`} title="Delete">
 								<i className="icon trash"></i>
 							</NavLink>
 						</td>
@@ -49,7 +49,7 @@ export default function BandsList({ bands }) {
 	);
 
 	const emptyMessage = (
-		<div class="ui info message">There is no bands yet in your collection</div>
+		<div className="ui info message">There is no bands yet in your collection</div>
 	);
 
 	return (

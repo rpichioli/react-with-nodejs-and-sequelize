@@ -4,15 +4,8 @@ import AlbumCard from './AlbumCard';
 import { NavLink } from 'react-router-dom';
 
 export default function AlbumsList({ band }) {
-	// console.group("AlbumsList");
-	// console.log(band);
-	// console.log(band.albums);
-	// console.log(band.title);
-	// console.log(band.id);
-	// console.groupEnd();
-
 	const albumCards = (
-		<div className="ui four cards">
+		<div className="ui five cards">
 			{
 				!!band.albums && band.albums.map((album) => {
 					return (<AlbumCard key={band.id} band={band} album={album} />);
@@ -22,7 +15,7 @@ export default function AlbumsList({ band }) {
 	);
 
 	const emptyMessage = (
-		<div class="ui info message">There is no albums registered yet.</div>
+		<div className="ui info message">There is no albums registered yet.</div>
 	);
 
 	return (
