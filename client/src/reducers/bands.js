@@ -46,26 +46,23 @@ export default function bands(state = [], action = {}) {
 		// Album
 		// ---------------------------------------------------------
 		case ALBUM_SAVED:
-			return state.map(item => {
-				if (item.id === Number(action.album.band_id)) {
-					item.albums[item.albums.length++] = action.album;
-				}
+			return unorderedState = state.map(item => {
+				if (item.id === Number(action.album.band_id)) item.albums.push(action.album);
+				item.albums.sort((a, b) => {
+					if (a.year > b.year) return 1;
+					if (a.year < b.year) return -1;
+					return 0; // a must be equal to b
+				});
 				return item;
 			});
 		case ALBUM_UPDATED:
-			console.groupCollapsed("ALBUM_UPDATED");
 			return state.map(item => {
-				console.log(action);
-				//console.log(item.id + ' ' + action.album.band_id)
 				if (item.id === Number(action.album.band_id)) {
-					console.log(action.album);
 					let album_index = item.albums.findIndex(album => album.id === Number(action.album.id));
-					console.log(album_index);
 					if (album_index > -1) item.albums[album_index] = action.album;
 				}
 				return item;
 			});
-			console.groupEnd();
 		case ALBUM_DELETED:
 			return state;
 		default:

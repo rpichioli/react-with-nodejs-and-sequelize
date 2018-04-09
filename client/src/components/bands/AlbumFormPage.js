@@ -21,7 +21,7 @@ class AlbumFormPage extends React.Component {
 				{
 					// Redirect if some action has worked succesfully, render if not
 					this.state.redirect ?
-						<Redirect to={`/band/${this.props.album.band_id}/albums`} /> :
+						<Redirect to={`/band/${this.props.match.params.id}/albums`} /> :
 						<div className="ui container">
 							<h1>Album Registration</h1>
 							<NavLink exact to={`/band/${this.props.match.params.id}/albums`} className="ui button">Back to albums list</NavLink>

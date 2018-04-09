@@ -10,7 +10,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
 	models.band.findAll({
 		include: [models.album],
-		order: [['title', 'ASC']]
+		order: [['title', 'ASC'], [models.album, 'year', 'ASC']]
 	}).then(bands => {
 		if (bands && Object.keys(bands).length > 0)
 			res.json({ bands });
