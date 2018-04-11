@@ -27,3 +27,5 @@ models.sequelize.sync().then(function() {
 });
 
 app.listen(8080, () => console.log('Server listening to localhost:8080'));
+
+export default app;
