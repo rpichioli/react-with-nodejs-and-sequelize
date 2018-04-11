@@ -4,21 +4,23 @@
         "password": "",
         "database": "react_sequelize",
         "host": "127.0.0.1",
-        "dialect": "mysql"
+        "dialect": "mysql",
+		"logging": false
     },
     "test": {
         "username": "root",
         "password": "",
         "database": "react_sequelize",
         "host": "",
-        "dialect": "mysql"
+        "dialect": "mysql",
+		"logging": false
     },
     "production": {
         "username": "root",
         "password": "",
         "database": "react_sequelize",
         "host": "",
-        "dialect": "mysql"
+        "dialect": "mysql",
+		"logging": false
     }
-
 }

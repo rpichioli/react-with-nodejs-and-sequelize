@@ -1,20 +1,24 @@
 #### ================ In development stage ================
 
-### Summary
+### The motivation
 The main idea of this project is to create an application that works with relational database (MySQL in this one) providing data through NodeJS Express API and exploring React/Redux features and possibilities in the front-end.
 
-You'll have contact with a simple login/logout feature, **JWT (JSON Web Token)** package to manage within tokens and improve security between server and client communication, implementation of a  **HOC (High Order Component)** in React-side that calls an authorization middleware in the API backend for any Components that are child of it, that authorizes the user to access all the stuff if everything is OK.
+### The project
+You'll have contact with a simple login/logout feature, **JWT (JSON Web Token)** package to manage tokens and improve security between server and client communication, **HOC (High Order Component)** in React-side that calls an authorization middleware in the API backend for any Components that are children of it.
 
-We already have 2 layers of CRUD, one of them has many from another. So we have explored a little bit from Sequelize ORM too when we talk about tables relationship queries and how to use them properly in models and API.
+We already have 2 layers of CRUD, one of them has many from another. So we have explored a little bit of Sequelize ORM using features that measure tables relationship queries and how to use them properly in models and API, of course.
+
+Another point is the data typing in React. The components are using **prop-types** npm package to specify type and requirement to properties. **No use of Flow**, not necessary.
 
 > - The **client-side** is a React + Redux app based;
 > - The **server-side** is built in NodeJS (Express) and works like an API server;
 > - Sequelize ORM to manage and mantain relational database and maintain;
 > - The [Passport](https://www.npmjs.com/package/passport) is basically a Express-compatible authentication middleware for Node.js.
 
-Another point is that we aren't using Flow in this application, only prop-types for data typing in components.
+### TDD
+The server-side NodeJS application uses Mocha and Chai to test each API while, in the React application, we are using Jest to test components and any other React stuff.
 
-If you have some suggestion, please let me know about it!
+**If you have some suggestion, please let me know about it!**
 
 #### Server-Side
 Located in the "/server/" folder, here becomes the NodeJS Express application.

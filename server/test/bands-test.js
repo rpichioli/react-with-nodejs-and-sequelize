@@ -1,20 +1,29 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const expect = chai.expect();
-const assert = chai.assert();
+const assert = chai.assert;
 const should = chai.should();
+const expect = chai.expect();
 
-const server = require('../index');
+chai.use(chaiHttp);
 
-describe('TDD for albuns API', function() {
-	it('Test: Get all bands and respective albums ordered by year', function() {
-		chai.request(server)
-			.get('/api/bands')
-			.end((err, res) => {
-				res.should.have.status(200);
-				res.should.be.json;
-				res.body.should.be.a('object');
-				done();
-			});
+describe('Bands', function() {
+	describe('GET /api/bands', function() {
+		it('Get all bands perfectly', function() {
+			return chai
+				.request('http://localhost:8080') //app
+				.get('/api/bands')
+				.then(res => {
+					res.should.have.status(200);
+					res.should.be.json;
+					res.body.should.be.an('object');
+					res.body.should.have.property('bands');
+				})
+				.catch(err => {
+					console.log(err);
+					err.should.have.status(400);
+					err.body.should.have.property('error');
+					err.body.error.should.eql('Any band found.');
+				});
+		});
 	});
 });
