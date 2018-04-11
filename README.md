@@ -15,18 +15,27 @@ Another point is the data typing in React. The components are using **prop-types
 > - Sequelize ORM to manage and mantain relational database and maintain;
 > - The [Passport](https://www.npmjs.com/package/passport) is basically a Express-compatible authentication middleware for Node.js.
 
-### TDD
+### Tests
 The server-side NodeJS application uses Mocha and Chai to test each API while, in the React application, we are using Jest to test components and any other React stuff.
+
+Install mocha and chai globally to test through the CLI.
 
 **If you have some suggestion, please let me know about it!**
 
-#### Server-Side
-Located in the "/server/" folder, here becomes the NodeJS Express application.
-Use ```npm install``` to install all dependencies and ```npm start``` to run the app.
+### How it's organized (physically)?
 
-#### Client-Side
-Located in the "/client/" folder, here is the React app. Built with the package "create-react-app" and working with Redux.
-Use ```npm install``` to install all dependencies and ```npm start``` to run the app.
+#### Server-Side (NodeJS)
+The **/server/** folder contains the NodeJS Express application. The server wasn't made by the official instalation preset that we can install from npm in CLI just because it was organized and focused since the blank file to the API management and NodeJS middlewares specific of this project. No unnecessary code and complexity.
 
-#### Developed by
-Rodrigo Quiñones Pichioli, since Mar/02/2018
+>Use ```npm install``` to install all dependencies and ```npm start``` to run the app.
+
+#### Client-Side (React)
+Located in the **/client/** folder, the client-side application is a React/Redux full application built above the official skeleton pattern from **create-react-app** package, and customized to the app you will have contact. This app uses a lot of the most used patterns, techniques and packages used in generic applications.
+
+>Use ```npm install``` to install all dependencies and ```npm start``` to run the app.
+
+#### Dump (Database)
+In the folder **/dump/** resides the SQL dumps containing the databases to run the application in your own development and test environment.
+
+### Developed by
+Rodrigo Quiñones Pichioli, since Mar/02/2018.
