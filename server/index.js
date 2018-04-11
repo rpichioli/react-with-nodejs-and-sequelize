@@ -21,11 +21,11 @@ app.use((req, res) => {
 
 // Sync database with Sequelize models
 models.sequelize.sync().then(function() {
-	console.log('Database working');
+	console.log('Database connected');
 }).catch(function(err) {
-	console.error(err, "Something went wrong with the database syncronization");
+	console.error(err, "Something went wrong, the database is not connected");
 });
 
-app.listen(8080, () => console.log('Server listening to localhost:8080'));
+app.listen(8080, () => console.log('Server listening to port 8080'));
 
-export default app;
+module.exports = app;
