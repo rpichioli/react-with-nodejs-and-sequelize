@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
  * Save new band album
  */
 router.post('/', (req, res) => {
-	const { title, description, cover, year, band_id } = req.body;
+	let { title, description, cover, year, band_id } = req.body;
 	models.album
 		.build({ title, description, cover, year, band_id })
 		.save()
