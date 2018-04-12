@@ -47,6 +47,8 @@ class AlbumForm extends React.Component {
 
 		// Proceed if everything is OK
 		if (Object.keys(errors).length === 0) {
+			console.log(this.state);
+			console.log(this.props);
 			this.setState({ loading: true }); // Set up the loading
 			this.props.saveAlbum(this.state); // Send the state to the parent component save function
 		}
@@ -119,9 +121,9 @@ class AlbumForm extends React.Component {
 	}
 }
 
-AlbumForm.propTypes = {
-	album: PropTypes.object,
-	saveAlbum: PropTypes.func.isRequired
-}
+// AlbumForm.propTypes = {
+// 	album: PropTypes.object,
+// 	saveAlbum: PropTypes.func.isRequired
+// }
 
 export default AlbumForm;

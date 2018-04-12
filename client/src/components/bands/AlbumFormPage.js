@@ -6,14 +6,28 @@ import { addAlbum, updateAlbum } from '../../actions/albums';
 import AlbumForm from './AlbumForm';
 
 class AlbumFormPage extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
 	state = { redirect: false };
 
-	saveAlbum = ({ id, title, year, description, cover, band_id }) => {
-		console.log(id);
-		if (id && id > 0)
-			this.props.updateAlbum({ id, title, year, description, cover, band_id }).then(() => this.setState({ redirect: true }));
-		else
-			this.props.addAlbum({ title, year, description, cover, band_id: this.props.match.params.id }).then(() => this.setState({ redirect: true }));
+	// saveAlbum = ({ id, title, year, description, cover, band_id }) => {
+	saveAlbum = (album) => {
+		console.log(album.id);
+		console.log(this.props);
+		if (album.id && album.id > 0) {
+			return this.props.updateAlbum(album).then(() => { this.setState({ redirect: true }) });
+			// this.props.updateAlbum({
+			// 	id, title, year, description, cover, band_id
+			// }).then(() => this.setState({ redirect: true }));
+		} else {
+			album.band_id = this.props.match.params.id;
+			return this.props.addAlbum(album).then(() => { this.setState({ redirect: true }) });
+			// this.props.addAlbum({
+			// 	title, year, description, cover, band_id: this.props.match.params.id
+			// }).then(() => this.setState({ redirect: true }));
+		}
 	}
 
 	render() {
@@ -36,8 +50,8 @@ class AlbumFormPage extends React.Component {
 }
 
 AlbumFormPage.propTypes = {
-	updateAlbum: PropTypes.func.isRequired,
-	addAlbum: PropTypes.func.isRequired
+	updateAlbum: PropTypes.func, //.isRequired,
+	addAlbum: PropTypes.func //.isRequired
 };
 
 function mapStateToProps(state, props) {
