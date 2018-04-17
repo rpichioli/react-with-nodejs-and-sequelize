@@ -13,9 +13,9 @@ router.get('/', (req, res) => {
 		order: [['title', 'ASC'], [models.album, 'year', 'ASC']]
 	}).then(bands => {
 		if (bands && Object.keys(bands).length > 0)
-			res.json({ bands });
+			res.json({ success: true, bands });
 		else
-			res.status(400).json({ error: "Any band found." });
+			res.status(400).json({ success: false, error: "Any band found." });
 	})
 });
 
@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
 		.build({ title, year, description })
 		.save()
 		.then(() => res.json({ success: true }))
-		.catch((err) => res.status(400).json({ errors: { globals: err } }));
+		.catch((err) => res.status(400).json({ success: false, errors: { globals: err } }));
 });
 
 /**
@@ -64,7 +64,7 @@ router.put('/:id', (req, res) => {
 	models.band
 		.update({ title, year, description }, { where: { id } })
 		.then(() => res.json({ success: true }))
-		.catch((err) => res.status(400).json({ errors: { globals: "Ops, something wrong happened.." } }));
+		.catch((err) => res.status(400).json({ success: false, errors: { globals: "Ops, something wrong happened.." } }));
 });
 
 /**
@@ -75,7 +75,7 @@ router.delete('/:id', (req, res) => {
 	models.band
 		.destroy({ where: { id } })
 		.then((rowDeleted) => res.json({ success: true, deleted: rowDeleted }))
-		.catch((err) => res.status(500).json({ errors: { globals: err } }));
+		.catch((err) => res.status(500).json({ success: false, errors: { globals: err } }));
 });
 
 export default router;

@@ -10,9 +10,9 @@ router.get('/:id', (req, res) => {
 	const id = req.params.id
 	models.album.find({ where: { id } }).then(album => {
 		if (album)
-			res.json({ album });
+			res.json({ success: true, album });
 		else
-			res.status(400).json({ error: "Album not found." });
+			res.status(400).json({ success: false, error: "Album not found." });
 	})
 });
 
@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
 		.build({ title, description, cover, year, band_id })
 		.save()
 		.then(() => res.json({ success: true }))
-		.catch((err) => res.status(400).json({ errors: { globals: err }}));
+		.catch((err) => res.status(400).json({ success: false, errors: { globals: err }}));
 });
 
 /**
@@ -36,7 +36,7 @@ router.put('/:id', (req, res) => {
 	models.album
 		.update({ title, description, cover, year }, { where: { id }})
 		.then(() => res.json({ success: true }))
-		.catch((err) => res.status(400).json({ errors: { globals: err }}));
+		.catch((err) => res.status(400).json({ success: false, errors: { globals: err }}));
 });
 
 /**
@@ -47,7 +47,7 @@ router.delete('/:id', (req, res) => {
 	models.album
 		.destroy({ where: { id } })
 		.then(() => res.json({ success: true }))
-		.catch((err) => res.status(400).json({ errors: { globals: err } }));
+		.catch((err) => res.status(400).json({ success: false, errors: { globals: err } }));
 });
 
 export default router;
