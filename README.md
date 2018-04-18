@@ -21,7 +21,7 @@ The server-side NodeJS application uses Mocha and Chai to test each API while, i
 Install mocha chai globally to test through the CLI.
 ```npm i -g mocha chai```
 
-We also uso chai-http to improve our chai features and possibilities, see more in the [official plugin page]((http://www.chaijs.com/plugins/chai-http/). To install just use:
+We also uso chai-http to improve our chai features and possibilities, see more in the [official plugin page](http://www.chaijs.com/plugins/chai-http/). To install just use:
 ```npm i -g chai-http```
 
 I've configured babel to compile tests in **npm run** zone with:
