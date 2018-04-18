@@ -18,14 +18,11 @@ Another point is the data typing in React. The components are using **prop-types
 ### Tests
 The server-side NodeJS application uses Mocha and Chai to test each API while, in the React application, we are using Jest to test components and any other React stuff.
 
-Install mocha chai globally to test through the CLI.
-```npm i -g mocha chai```
+Install Mocha and Chai globally to run the tests through the CLI using ```npm i -g mocha chai``` in terminal.
 
-We also uso chai-http to improve our chai features and possibilities, see more in the [official plugin page](http://www.chaijs.com/plugins/chai-http/). To install just use:
-```npm i -g chai-http```
+We also uso chai-http to improve our chai features and possibilities, see more in the [official plugin page](http://www.chaijs.com/plugins/chai-http/). To install just use ```npm i -g chai-http``` in your terminal.
 
-I've configured babel to compile tests in **npm run** zone with:
-```"test": "mocha --compilers js:babel-core/register"```
+I've configured babel to compile tests in package.json **npm run** zone with ```"test": "mocha --compilers js:babel-core/register"```, this way you can go into test directory and simply just run ```npm run```.
 
 ### How it's organized (physically)?
 
