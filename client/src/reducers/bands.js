@@ -36,29 +36,27 @@ export default function bands(state = [], action = {}) {
 		// Album
 		// ---------------------------------------------------------
 		case ALBUM_SAVED:
-			// let band = state.find(item => item.id === Number(action.album.band_id));
-			// console.log(band.albums);
-			// //console.log(action.album);
-			// if (band) {
-			// 	// If we already have albums recorded to the band
-			// 	if (band.albums && band.albums.length > 0) {
-			// 		// Add the album to the band
-			// 		band.albums.push(action.album);
-			// 		console.log(band.albums);
-			// 		// Sort albums by year
-			// 		let albums = band.albums.sort((a, b) => sortArrayByField(a, b, "year"));
-			// 		return state.map(item => {
-			// 			if (item.id === Number(action.album.band_id)) item.albums = albums;
-			// 			return item;
-			// 		});
-			// 	// Just push the album to the empty array
-			// 	} else {
-			// 		return state.map(item => {
-			// 			if (item.id === Number(action.album.band_id)) item.albums.push(action.album);
-			// 			return item;
-			// 		});
-			// 	}
-			// } else
+			// Selelect the band in state
+			let band = state.find(item => item.id === Number(action.album.band_id));
+			if (band) {
+				// If we already have albums recorded to the band
+				if (band.albums && band.albums.length > 0) {
+					// Add the album to the band
+					band.albums.push(action.album);
+					// Sort albums by year
+					let albums = band.albums.sort((a, b) => sortArrayByField(a, b, "year"));
+					return state.map(item => {
+						if (item.id === Number(action.album.band_id)) item.albums = albums;
+						return item;
+					});
+				// Just push the album to the empty array
+				} else {
+					return state.map(item => {
+						if (item.id === Number(action.album.band_id)) item.albums.push(action.album);
+						return item;
+					});
+				}
+			} else
 				return state;
 		case ALBUM_UPDATED:
 			return state.map(item => {

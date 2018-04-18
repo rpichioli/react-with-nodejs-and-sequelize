@@ -53,7 +53,7 @@ export function addBand(band) {
 	return dispatch => {
 		let { title, year, description } = band;
 		return axios.post('/api/bands', { title, year, description })
-			.then(response => dispatch(bandSaved(response.data.band)))
+			.then(response => dispatch(bandSaved(band)))
 			.catch(error => console.log(error));
 	}
 }
@@ -61,14 +61,14 @@ export function updateBand(band) {
 	return dispatch => {
 		let { id, title, year, description } = band;
 		return axios.put(`/api/bands/${id}`, { id, title, year, description })
-			.then(response => dispatch(bandUpdated(response.data.band)))
+			.then(response => dispatch(bandUpdated(band)))
 			.catch(error => console.log(error));
 	}
 }
 export function deleteBand(band) {
 	return dispatch => {
 		return axios.delete(`/api/bands/${band.id}`)
-			.then(response => dispatch(bandDeleted(response.data.band)))
+			.then(response => dispatch(bandDeleted(band)))
 			.catch(error => console.log(error));
 	}
 }
