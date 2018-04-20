@@ -21,7 +21,10 @@ app.use((req, res) => {
 
 // Sync database with Sequelize models
 models.sequelize.sync().then(function() {
-	//console.log('Database connected');
+	console.log(`Current environment: ${process.env.NODE_ENV}`);
+	if (process.env.NODE_ENV !== "test") {
+		console.log('Database connected');
+	}
 }).catch(function(err) {
 	console.error(err, "Something went wrong, the database is not connected");
 });
