@@ -3,6 +3,7 @@ const chaiHttp = require('chai-http');
 const assert = chai.assert;   // TDD
 const should = chai.should(); // BDD
 const expect = chai.expect(); // BDD
+const server = require('../index'); // NodeJS server app (test environment!)
 
 chai.use(chaiHttp);
 
@@ -10,7 +11,7 @@ describe('Bands', () => {
 	describe('GET /api/bands', () => {
 		it('Get all bands', () => {
 			return chai
-				.request('http://localhost:8080') //app
+				.request(server)
 				.get('/api/bands')
 				.then(res => {
 					res.should.have.status(200);
@@ -29,7 +30,7 @@ describe('Bands', () => {
 		});
 		it('Get specific band by ID', () => {
 			return chai
-				.request('http://localhost:8080')
+				.request(server)
 				.get('/api/bands/1')
 				.then(res => {
 					res.should.have.status(200);
@@ -56,7 +57,7 @@ describe('Albums', () => {
 	describe('GET /api/albums', () => {
 		it('Get album by ID', () => {
 			return chai
-				.request('http://localhost:8080')
+				.request(server)
 				.get('/api/albums/1')
 				.then(res => {
 					res.should.have.status(200);
