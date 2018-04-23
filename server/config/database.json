@@ -1,26 +1,26 @@
 {
-    "development": {
-        "username": "root",
-        "password": "",
-        "database": "react_sequelize",
-        "host": "127.0.0.1",
-        "dialect": "mysql",
+	"development": {
+		"username": "root",
+		"password": "",
+		"database": "react_sequelize",
+		"host": "127.0.0.1",
+		"dialect": "mysql",
 		"logging": false
-    },
-    "test": {
-        "username": "root",
-        "password": "",
-        "database": "react_sequelize",
-        "host": "",
-        "dialect": "mysql",
+	},
+	"test": {
+		"username": "root",
+		"password": "",
+		"database": "react_sequelize_test",
+		"host": "",
+		"dialect": "mysql",
 		"logging": false
-    },
-    "production": {
-        "username": "root",
-        "password": "",
-        "database": "react_sequelize",
-        "host": "",
-        "dialect": "mysql",
+	},
+	"production": {
+		"username": "root",
+		"password": "",
+		"database": "react_sequelize_prod",
+		"host": "",
+		"dialect": "mysql",
 		"logging": false
-    }
+	}
 }

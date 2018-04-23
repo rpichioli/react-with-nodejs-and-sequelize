@@ -1,12 +1,12 @@
 #### ================ In development stage ================
 
 ### The motivation
-The main idea of this project is to create an application that works with relational database (MySQL in this one) providing data through NodeJS Express API and exploring React/Redux features and possibilities in the front-end.
+The main idea of this project is to create an application that works with relational database (MySQL in our case) providing data through NodeJS Express API and use React + Redux in the front-end consuming the API data.
 
 ### The project
-You'll have contact with a simple login/logout feature, **JWT (JSON Web Token)** package to manage tokens and improve security between server and client communication, **HOC (High Order Component)** in React-side that calls an authorization middleware in the API backend for any Components that are children of it.
+You'll have contact with a simple login/logout feature, **JWT (JSON Web Token)** package to manage tokens and improve security between server and client communication and **HOC (High Order Component)** in React-side that calls an authorization middleware in the API backend for any Components that are children of it.
 
-We already have 2 layers of CRUD, one of them has many from another. So we have explored a little bit of Sequelize ORM using features that measure tables relationship queries and how to use them properly in models and API, of course.
+We have 2 layers of CRUD already, one of them has many from another. So we have explored a little bit of Sequelize ORM using features that measure tables relationship queries and how to use them properly in models and API, of course.
 
 Another point is the data typing in React. The components are using **prop-types** npm package to specify type and requirement to properties. **No use of Flow**, not necessary.
 
@@ -18,9 +18,11 @@ Another point is the data typing in React. The components are using **prop-types
 ### Tests
 The server-side NodeJS application uses Mocha and Chai to test each API while, in the React application, we are using Jest to test components and any other React stuff.
 
-Install mocha and chai globally to test through the CLI.
+Install Mocha and Chai globally to run the tests through the CLI using ```npm i -g mocha chai``` in terminal.
 
-**If you have some suggestion, please let me know about it!**
+We also uso chai-http to improve our chai features and possibilities, see more in the [official plugin page](http://www.chaijs.com/plugins/chai-http/). To install just use ```npm i -g chai-http``` in your terminal.
+
+I've configured babel to compile tests in package.json **npm run** zone with ```"test": "mocha --compilers js:babel-core/register"```, this way you can go into test directory and simply just run ```npm run```.
 
 ### How it's organized (physically)?
 
