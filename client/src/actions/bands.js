@@ -20,6 +20,7 @@ export function bandFetched(band) {
 	return { type: BAND_FETCHED, band };
 }
 export function bandSaved(band) {
+	band.albums = []; // Initialize with empty albums list
 	return { type: BAND_SAVED, band };
 }
 export function bandUpdated(band) {
