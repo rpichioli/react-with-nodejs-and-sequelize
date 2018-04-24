@@ -9,7 +9,6 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 
 const db = {};
 
-// Import all models setting each one to the db object
 fs
 	.readdirSync(__dirname)
 	.filter(function(file) {
@@ -21,7 +20,9 @@ fs
 	});
 
 Object.keys(db).forEach(function(modelName) {
-	if ("associate" in db[modelName]) db[modelName].associate(db);
+	if ("associate" in db[modelName]) {
+		db[modelName].associate(db);
+	}
 });
 
 db.sequelize = sequelize;
