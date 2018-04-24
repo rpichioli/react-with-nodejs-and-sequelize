@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import classnames from 'classnames';
 
 export default function BandsList({ bands }) {
 
@@ -14,12 +13,7 @@ export default function BandsList({ bands }) {
 						<td>{band.id}</td>
 						<td>{band.title}</td>
 						<td style={{ textAlign: "center" }}>{band.year}</td>
-						<td style={{ textAlign: "center" }}>
-							<div className={classnames('ui','label','circular','small', {
-								'green' : band.albums.length > 0,
-								'yellow' : band.albums.length == 0
-							})}>{band.albums.length}</div>
-						</td>
+						<td style={{ textAlign: "center" }}>{band.albums.length}</td>
 						<td style={{ textAlign: "right" }}>
 							<NavLink className="ui button compact icon small black" to={`/band/${band.id}/albums/`} title="More details">
 								<i className="icon eye"></i>

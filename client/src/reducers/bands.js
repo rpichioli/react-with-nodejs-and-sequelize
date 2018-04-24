@@ -36,8 +36,9 @@ export default function bands(state = [], action = {}) {
 		// Album
 		// ---------------------------------------------------------
 		case ALBUM_SAVED:
-			// Selelect the band in state
 			let band = state.find(item => item.id === Number(action.album.band_id));
+			console.log(band);
+			//console.log(action.album);
 			if (band) {
 				// If we already have albums recorded to the band
 				if (band.albums && band.albums.length > 0) {

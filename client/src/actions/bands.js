@@ -20,7 +20,6 @@ export function bandFetched(band) {
 	return { type: BAND_FETCHED, band };
 }
 export function bandSaved(band) {
-	band.albums = []; // Initialize with empty albums list
 	return { type: BAND_SAVED, band };
 }
 export function bandUpdated(band) {
@@ -54,7 +53,7 @@ export function addBand(band) {
 	return dispatch => {
 		let { title, year, description } = band;
 		return axios.post('/api/bands', { title, year, description })
-			.then(response => dispatch(bandSaved(band)))
+			.then(response => dispatch(bandSaved(response.data.band)))
 			.catch(error => console.log(error));
 	}
 }
@@ -62,14 +61,14 @@ export function updateBand(band) {
 	return dispatch => {
 		let { id, title, year, description } = band;
 		return axios.put(`/api/bands/${id}`, { id, title, year, description })
-			.then(response => dispatch(bandUpdated(band)))
+			.then(response => dispatch(bandUpdated(response.data.band)))
 			.catch(error => console.log(error));
 	}
 }
 export function deleteBand(band) {
 	return dispatch => {
 		return axios.delete(`/api/bands/${band.id}`)
-			.then(response => dispatch(bandDeleted(band)))
+			.then(response => dispatch(bandDeleted(response.data.band)))
 			.catch(error => console.log(error));
 	}
 }
