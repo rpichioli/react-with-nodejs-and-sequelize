@@ -62,11 +62,6 @@ class BandForm extends React.Component {
 			const { id, title, year, description } = this.state;
 			this.setState({ loading: true });
 			this.props.saveBand({ id, title, year, description });
-			// .catch((err) => {
-			// 	err.response.json().then(({ errors }) => {
-			// 		this.setState({ errors, loading: false })
-			// 	})
-			// });
 		}
 	}
 
@@ -110,6 +105,7 @@ class BandForm extends React.Component {
 						placeholder="The band summary"
 						onChange={this.handleChange}
 						value={this.state.description}
+						style={{height: '115px'}}
 					></textarea>
 					<span>{this.state.errors.description}</span>
 				</div>
