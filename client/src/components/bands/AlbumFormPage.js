@@ -109,6 +109,7 @@ class AlbumFormPage extends React.Component {
 										className="ui input"
 										placeholder="The band summary"
 										onChange={this.handleChange}
+										style={{height: '115px'}}
 									></textarea>
 									<span>{this.state.errors.description}</span>
 								</div>
