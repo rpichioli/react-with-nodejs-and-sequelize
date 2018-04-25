@@ -4,31 +4,31 @@ class HomePage extends React.Component {
 	render() {
 		return (
 			<div>
-				<div class="ui inverted vertical masthead aligned segment">
+				<div className="ui inverted vertical masthead aligned segment">
 						<div className="ui container">
 							<h1 className="ui inverted header">React with Redux and Sequelize</h1>
 							<p>Check the code in Github</p>
-							<button className="ui github button primary" onClick="window.location='https://github.com/rpichioli/react-with-sequelize-and-passport'">
+							<a className="ui github button primary" href="https://github.com/rpichioli/react-with-sequelize-and-passport" target="_blank">
 								<i className="github icon"></i>
 								Let me in!
-							</button>
+							</a>
 					</div>
 				</div>
 
-				<div class="ui vertical stripe segment">
-					<div class="ui middle aligned stackable grid container">
-						<div class="row">
-							<div class="wide column">
+				<div className="ui vertical stripe segment">
+					<div className="ui middle aligned stackable grid container">
+						<div className="row">
+							<div className="wide column">
 								{/* eight */}
-								<h3 class="ui header">Server-Side</h3>
+								<h3 className="ui header">Server-Side</h3>
 								<p>Located in the "/server/" folder, here becomes the NodeJS Express application.</p>
 								<p>Use npm install to install all dependencies and npm start to run the app.</p>
-								<h3 class="ui header">Client-Side</h3>
+								<h3 className="ui header">Client-Side</h3>
 								<p>Located in the "/client/" folder, here is the React app. Built with the package "create-react-app" and working with Redux.</p>
 								<p>Use npm install to install all dependencies and npm start to run the app.</p>
 							</div>
-							{/* <div class="six wide right floated column">
-								<img src="https://raw.githubusercontent.com/rexxars/react-hexagon/HEAD/logo/react-hexagon.png" class="ui large image" alt="atom" />
+							{/* <div className="six wide right floated column">
+								<img src="https://raw.githubusercontent.com/rexxars/react-hexagon/HEAD/logo/react-hexagon.png" className="ui large image" alt="atom" />
 							</div> */}
 						</div>
 					</div>
@@ -44,7 +44,7 @@ class HomePage extends React.Component {
 							<div className="column">
 								<h3>"Why I haven't used NodeJS before?"</h3>
 								<p>
-									<i class="child icon"></i>
+									<i className="child icon"></i>
 									<b>Favorite</b> choice for web apps
 								</p>
 							</div>
@@ -52,29 +52,29 @@ class HomePage extends React.Component {
 					</div>
 				</div>
 
-				<div class="ui inverted vertical footer segment">
-					<div class="ui container">
-						<div class="ui stackable inverted divided equal height stackable grid">
-							<div class="three wide column">
-								<h4 class="ui inverted header">Test</h4>
-								<div class="ui inverted link list">
-									<a href="#" class="item">Test</a>
-									<a href="#" class="item">Test</a>
-									<a href="#" class="item">Test</a>
-									<a href="#" class="item">Test</a>
+				<div className="ui inverted vertical footer segment">
+					<div className="ui container">
+						<div className="ui stackable inverted divided equal height stackable grid">
+							<div className="three wide column">
+								<h4 className="ui inverted header">Test</h4>
+								<div className="ui inverted link list">
+									<a href="#" className="item">Test</a>
+									<a href="#" className="item">Test</a>
+									<a href="#" className="item">Test</a>
+									<a href="#" className="item">Test</a>
 								</div>
 							</div>
-							<div class="three wide column">
-								<h4 class="ui inverted header">Test</h4>
-								<div class="ui inverted link list">
-									<a href="#" class="item">Test</a>
-									<a href="#" class="item">Test</a>
-									<a href="#" class="item">Test</a>
-									<a href="#" class="item">Test</a>
+							<div className="three wide column">
+								<h4 className="ui inverted header">Test</h4>
+								<div className="ui inverted link list">
+									<a href="#" className="item">Test</a>
+									<a href="#" className="item">Test</a>
+									<a href="#" className="item">Test</a>
+									<a href="#" className="item">Test</a>
 								</div>
 							</div>
-							<div class="seven wide column">
-								<h4 class="ui inverted header">Footer Header</h4>
+							<div className="seven wide column">
+								<h4 className="ui inverted header">Footer Header</h4>
 								<p>Extra space for a call to action inside the footer that could help re-engage users.</p>
 							</div>
 						</div>

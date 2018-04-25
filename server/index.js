@@ -21,9 +21,26 @@ app.use((req, res) => {
 
 // Sync database with Sequelize models
 models.sequelize.sync().then(function() {
-	console.log('Database working');
+	if (process.env.NODE_ENV !== "test") {
+		console.log('Database connected!');
+	}
 }).catch(function(err) {
-	console.error(err, "Something went wrong with the database syncronization");
+	console.error(err, "Something went wrong, database is not connected!");
 });
 
-app.listen(8080, () => console.log('Server listening to localhost:8080'));
+if (process.env.NODE_ENV == 'test')
+	app.listen(5000, () => console.log(`Tests listening to 5000.`));
+else
+	app.listen(8080, () => console.log(`NodeJS listening to 8080. Current environment: ${process.env.NODE_ENV}.`));
+
+module.exports = app;
+
+// ------------------------------------------------------------------------------
+// NodeJS Environment > process.env.NODE_ENV
+// ------------------------------------------------------------------------------
+// To set an environment variable in Windows normally:
+//		SET NODE_ENV=development
+// Through PowerShell terminal:
+//		$env:NODE_ENV="development"
+// If you are in OSX or Linux terminals:
+//		export NODE_ENV=development
