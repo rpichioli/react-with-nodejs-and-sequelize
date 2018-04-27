@@ -16,19 +16,18 @@ export function albumSaved(album) {
 export function albumUpdated(album) {
 	return { type: ALBUM_UPDATED, album };
 }
-export function albumDeleted(album) {
-	return { type: ALBUM_DELETED, album };
+export function albumDeleted(albumId) {
+	return { type: ALBUM_DELETED, albumId };
 }
 
 // -----------------------------------------------------------
 // Business rules before dispatch
 // -----------------------------------------------------------
 export function addAlbum(album) {
-	console.log(album);
 	return dispatch => {
 		const { title, year, description, cover, band_id } = album;
 		return axios.post('/api/albums', { title, year, description, cover, band_id })
-			.then(response => dispatch(albumSaved(album)))
+			.then(response => {console.log(response); dispatch(albumSaved(response.data.album))})
 			.catch(error => console.log(error));
 	}
 }
@@ -43,7 +42,7 @@ export function updateAlbum(album) {
 export function deleteAlbum(album) {
 	return dispatch => {
 		return axios.delete(`/api/albums/${album.id}`)
-			.then(response => dispatch(albumDeleted(response.data.album)))
+			.then(response => dispatch(albumDeleted(album.id)))
 			.catch(error => console.log(error));
 	}
 }

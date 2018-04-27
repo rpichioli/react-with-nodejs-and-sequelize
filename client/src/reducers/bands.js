@@ -37,8 +37,6 @@ export default function bands(state = [], action = {}) {
 		// ---------------------------------------------------------
 		case ALBUM_SAVED:
 			let band = state.find(item => item.id === Number(action.album.band_id));
-			//console.log(band);
-			//console.log(action.album);
 			if (band) {
 				// If we already have albums recorded to the band
 				if (band.albums && band.albums.length > 0) {
@@ -46,11 +44,9 @@ export default function bands(state = [], action = {}) {
 					band.albums.push(action.album);
 					// Sort albums by year
 					let albums = band.albums.sort((a, b) => sortArrayByField(a, b, "year"));
-					console.log(albums);
 					// Set sorted bands to the selected band
 					return state.map(item => {
 						if (item.id === Number(action.album.band_id)) item.albums = albums;
-						console.log(item);
 						return item;
 					});
 				// Just push the album to the empty array
@@ -60,8 +56,7 @@ export default function bands(state = [], action = {}) {
 						return item;
 					});
 				}
-			} else
-				return state; // bypass
+			} else return state; // bypass
 		case ALBUM_UPDATED:
 			return state.map(item => {
 				if (item.id === Number(action.album.band_id)) {
