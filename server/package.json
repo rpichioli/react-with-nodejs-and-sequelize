@@ -18,14 +18,18 @@
 		"body-parser": "^1.18.2",
 		"chai": "^4.1.2",
 		"chai-http": "^4.0.0",
+		"cookie-parser": "^1.4.3",
 		"dotenv": "^5.0.1",
 		"express": "^4.16.3",
+		"express-session": "^1.15.6",
 		"lodash": "^4.17.10",
 		"mocha": "^5.1.1",
 		"morgan": "^1.9.0",
 		"mysql2": "^1.5.3",
+		"passport": "^0.4.0",
 		"sequelize": "^4.37.6",
 		"sequelize-cli": "^4.0.0",
+		"serve-static": "^1.13.2",
 		"validator": "^9.4.1"
 	}
 }
