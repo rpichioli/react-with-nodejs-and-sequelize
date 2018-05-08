@@ -15,6 +15,7 @@
 		"nodemon": "^1.17.3"
 	},
 	"dependencies": {
+		"bcrypt-nodejs": "0.0.3",
 		"body-parser": "^1.18.2",
 		"chai": "^4.1.2",
 		"chai-http": "^4.0.0",
@@ -27,6 +28,7 @@
 		"morgan": "^1.9.0",
 		"mysql2": "^1.5.3",
 		"passport": "^0.4.0",
+		"passport-local": "^1.0.0",
 		"sequelize": "^4.37.6",
 		"sequelize-cli": "^4.0.0",
 		"serve-static": "^1.13.2",

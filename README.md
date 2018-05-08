@@ -10,29 +10,31 @@ Besides the registration the project has a simple login/logout feature made usin
 > - This application uses Sequelize ORM to manage relational database and maintain it's data.
 > - The [Passport](https://www.npmjs.com/package/passport) is basically a Express-compatible authentication middleware for Node.js.
 
-I prefer not to use Flow to type data in this project, we'll use prop-types feature to type properties in React components and also say if it's necessarily required or not.
-
-If you have some suggestion, let me know about it!
+I didn't think it was interesting to use Flow for data typing, instead I chose to use only prop-types to cover the type and obligation for React Components, when it's necessary.
 
 #### Server-Side
 The NodeJS Express application, located in the ```/server/``` folder.
 
 Inside it's scope use ```npm install``` to install all dependencies and ```npm start``` to run the server application after that.
 
->Be sure database is working before starting the server.
->Database configurations for each environment are inside ```/server/config/database.json```.
+> - Be sure that the database is working before starting the server.
+> - All the database connections you need (for each environment) are in ```/server/config/database.json```.
 
 #### Client-Side
-Located in the ```/client/``` folder the client-side React application was built within the functional preconfigured project (with Babel, Webpack, and more..) provided by the official Facebook [create-react-app](https://www.npmjs.com/package/create-react-app) npm package that simply says in it's GitHub "Create React apps with no build configuration".
+In the ```/client/``` folder we have the client-side React application.
+
+This client was built using the official Facebook [create-react-app](https://www.npmjs.com/package/create-react-app) npm package. This package basically create a working React application, configured with minimal dependency and granting imediate work with no configuration for features like Babel, Webpack, and another stuff (because it's already done).
 
 To install npm dependencies use ```npm install``` and finally ```npm start``` to run the React application.
 
 #### TDD + BDD
-To verify if API we have done are working succesfully, we have writen some tests in Mocha + Chai, disposed in ```/server/test/```.
+We have some tests too to be sure that our client and server-side API are working succesfully.
 
-We are using Mocha for the tests and Chai to the asserts (TDD) and the behaviour tests (BDD) to improve the test accuracy against the way we use the API and also the way we should take care about errors.
+There some tests I wrote in Mocha + Chai, disposed in ```/server/test/```.
 
-You can run the tests just entering the test folder and type in terminal: ```npm run test```.
+Mocha is used to build the tests and Chai to configure the asserts (TDD) and the behaviours (BDD) to improve the test accuracy against the way we can use the API and also the way we should take care about errors. This way we know it's OK for every case.
+
+You can run the tests just entering the test folder and type in terminal: ```npm run test``` - It's configured to run and compile with Babel for ES6 in then server "package.json".
 
 #### Developed by
 Rodrigo Quiñones Pichioli, since Mar/02/2018
