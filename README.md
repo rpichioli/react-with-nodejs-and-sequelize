@@ -27,6 +27,8 @@ This client was built using the official Facebook [create-react-app](https://www
 
 To install npm dependencies use ```npm install``` and finally ```npm start``` to run the React application.
 
+The UI is fully made using [Semantic UI](https://semantic-ui.com/) - decided that it's the oportunity to get it out from my pending PoC checklist and use effectively. Semantic is a development framework that helps to create modern designs and responsive layouts. It also empowers designers and developers by creating a shared vocabulary for UI.
+
 #### TDD + BDD
 We have some tests too to be sure that our client and server-side API are working succesfully.
 
