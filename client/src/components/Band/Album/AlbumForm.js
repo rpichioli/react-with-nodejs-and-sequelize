@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { addAlbum, updateAlbum } from '../../actions/albums';
+import { addAlbum, updateAlbum } from '../../../actions/albums';
 
-class AlbumFormPage extends React.Component {
+class AlbumForm extends React.Component {
 	state = {
 		id: this.props.album ? this.props.album.id : null,
 		title: this.props.album ? this.props.album.title : '',
@@ -137,7 +137,7 @@ class AlbumFormPage extends React.Component {
 	}
 }
 
-AlbumFormPage.propTypes = {
+AlbumForm.propTypes = {
 	updateAlbum: PropTypes.func.isRequired,
 	addAlbum: PropTypes.func.isRequired
 };
@@ -152,4 +152,4 @@ function mapStateToProps(state, props) {
 	return { album: null };
 }
 
-export default connect(mapStateToProps, { addAlbum, updateAlbum })(AlbumFormPage);
+export default connect(mapStateToProps, { addAlbum, updateAlbum })(AlbumForm);
