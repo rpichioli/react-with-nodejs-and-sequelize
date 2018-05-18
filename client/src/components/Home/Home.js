@@ -6,8 +6,9 @@ class HomePage extends React.Component {
 			<div>
 				<div className="ui inverted vertical masthead aligned segment">
 						<div className="ui container">
-							<h1 className="ui inverted header">React with Redux and Sequelize</h1>
-							<p>Check the code in Github</p>
+							<h1 className="ui inverted header">Welcome!</h1>
+							<p>This is a simple project made with React + Redux, Sequelize and Passport.</p>
+							<p>Check the project code and documentation in the Github repository just clicking the button below:</p>
 							<a className="ui github button primary" href="https://github.com/rpichioli/react-with-sequelize-and-passport" target="_blank">
 								<i className="github icon"></i>
 								Let me in!

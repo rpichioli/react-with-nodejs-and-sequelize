@@ -6,8 +6,6 @@ import { NavLink } from 'react-router-dom';
 
 // Actions
 import { fetchBands } from '../../actions/bands';
-// Components
-//import BandsList from './BandList';
 
 class BandsListPage extends React.Component {
 
