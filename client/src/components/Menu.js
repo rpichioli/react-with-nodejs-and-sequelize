@@ -6,30 +6,21 @@ class Menu extends React.Component {
 	render() {
 		return (
 			<div className="ui fixed inverted menu">
-				<a href="/" className="header item">
+				<NavLink className="header item" activeonlywhenexact="active" exact to="/">
 					<img className="logo App-logo" src={logo} alt="Logo" />
-					React | All-in-One
-				</a>
-
-				<NavLink className="item" activeonlywhenexact="active" exact to="/">
-					<i className="home icon"></i> Home
+					The Application
 				</NavLink>
+
 				<NavLink className="item" activeonlywhenexact="active" exact to="/bands">
-					<i className="music icon"></i> Bands
+					Nested CRUD (Bands and Albums)
 				</NavLink>
 
-				<div className="right menu">
-					<div className="item">
-						<NavLink className="ui blue" exact to="/sign-up">
-							<i className="keyboard icon"></i>
-							Sign Up
-						</NavLink>
+				<div class="right menu">
+					<div class="item">
+						<NavLink className="ui button" to="/log-in">Log in</NavLink>
 					</div>
-					<div className="item">
-						<NavLink className="ui green" exact to="/sign-in">
-							<i className="paper plane icon"></i>
-							Sign in
-						</NavLink>
+					<div class="item">
+						<NavLink className="ui button blue" to="/sign-up">Sign Up</NavLink>
 					</div>
 				</div>
 			</div>
