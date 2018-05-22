@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-class SignIn extends React.Component {
+class LogIn extends React.Component {
 	state = {
 		identifier: '',
 		password: '',
@@ -20,7 +20,7 @@ class SignIn extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Sign In</h1>
+				<h1>Log In</h1>
 				<form className={classnames('ui', 'form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
 
 					<h4 class="ui dividing header">Fill with your credentials to log in</h4>
@@ -42,4 +42,4 @@ class SignIn extends React.Component {
 	}
 }
 
-export default SignIn;
+export default LogIn;

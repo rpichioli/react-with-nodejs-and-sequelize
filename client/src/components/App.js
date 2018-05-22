@@ -7,7 +7,8 @@ class App extends Component {
 			<div>
 				<Menu></Menu>
 
-				<div className="main">
+				{/* .main from index.css file */}
+				<div className="ui container text main">
 					{this.props.children}
 				</div>
 			</div>
