@@ -41,7 +41,7 @@ class BandForm extends React.Component {
 
 	componentWillReceiveProps = (nextProps) => {
 		this.setState({
-			//id: nextProps.band.id,
+			id: nextProps.band.id,
 			title: nextProps.band.title,
 			year: nextProps.band.year,
 			description: nextProps.band.description

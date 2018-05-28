@@ -1,12 +1,16 @@
-.main {
-	margin-top: 6em;
+body {
+	height: auto;
 }
 
-.masthead.segment {
-	/* min-height: 400px; */
+.main {
+	margin-top: 4em;
+}
+
+/* .masthead.segment {
+	/* min-height: 400px;
 	padding: 3em 0em;
 	margin-top: -3em !important;
-}
+} */
 /* .masthead .logo.item img {
 	margin-right: 1em;
 }
