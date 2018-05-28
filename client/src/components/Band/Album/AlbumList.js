@@ -9,15 +9,18 @@ import AlbumCard from './AlbumCard';
 class AlbumsList extends React.Component {
 
 	render() {
-		const albumCards = (
-			<div className="ui five cards">
-				{
-					!!this.props.band.albums && this.props.band.albums.map((album) => {
-						return (<AlbumCard key={this.props.band.id} band={this.props.band} album={album} />);
-					})
-				}
-			</div>
-		);
+		let albumCards = "";
+		if (!!this.props.band && !!this.props.band.albums) {
+			albumCards = (
+				<div className="ui three cards">
+					{
+						!!this.props.band.albums && this.props.band.albums.map((album) => {
+							return (<AlbumCard key={this.props.band.id} band={this.props.band} album={album} />);
+						})
+					}
+				</div>
+			);
+		}
 
 		const emptyMessage = (
 			<div className="ui info message">There is no albums registered yet.</div>

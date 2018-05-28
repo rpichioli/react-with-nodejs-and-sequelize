@@ -18,11 +18,13 @@ class AlbumCard extends React.Component {
 					<div className="description">{album.description}</div>
 				</div>
 				<div className="extra content">
-					<NavLink to={`/band/${band.id}/album/${album.id}`} className="ui basic button blue mini">
-						<i className="icon edit"></i> Edit
-					</NavLink>
-					<div className="ui basic button red mini right floated disabled">
-						<i className="icon trash"></i> Delete
+					<div class="ui vertical buttons fluid">
+						<NavLink to={`/band/${band.id}/album/${album.id}`} className="ui button labeled icon blue">
+							<i className="icon edit"></i> Edit
+						</NavLink>
+						<div className="ui button labeled icon red disabled">
+							<i className="icon trash"></i> Remove
+						</div>
 					</div>
 					{/* onClick={() => deleteGame(album._id)} */}
 				</div>
