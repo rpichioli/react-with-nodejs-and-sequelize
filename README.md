@@ -1,16 +1,16 @@
 #### ================ In development stage ================
 
 ### Summary
-The main idea of this project is to create an application with relational database exposing data through API services using NodeJS + Express. The front-end is a React + Redux application that manages state populated by the API based in each operation basically.
+The main idea of this project is to create an application with relational database exposing data through API services using NodeJS + Express. The front-end uses React and Redux working directly with state that is filled by the NodeJS API.
 
-Besides the registration the project has a simple login/logout feature made using HOC (High Order Component) in React-side that calls an authorization middleware in the API backend, as a layer, that authorizes the user to access all the stuff - if everything is OK.
+The registration layer has a simple login/logout feature made using HOC (High Order Component) in React-side that calls an authorization middleware in the API backend, as a layer, that authorizes the user to access all the stuff - if everything is OK.
 
 > - The **client-side** is a React + Redux app based.
 > - The **server-side** is built in NodeJS (Express) and works like an API server.
 > - This application uses Sequelize ORM to manage relational database and maintain it's data.
 > - The [Passport](https://www.npmjs.com/package/passport) is basically a Express-compatible authentication middleware for Node.js.
 
-I didn't think it was interesting to use Flow for data typing, instead I chose to use only prop-types to cover the type and obligation for React Components, when it's necessary.
+I chose to use only [prop-types](https://www.npmjs.com/package/prop-types) to cover all that is required for data typing and obligation in React Components, when it's necessary. 
 
 #### Server-Side
 The NodeJS Express application, located in the ```/server/``` folder.
@@ -36,7 +36,7 @@ There some tests I wrote in Mocha + Chai, disposed in ```/server/test/```.
 
 Mocha is used to build the tests and Chai to configure the asserts (TDD) and the behaviours (BDD) to improve the test accuracy against the way we can use the API and also the way we should take care about errors. This way we know it's OK for every case.
 
-You can run the tests just entering the test folder and type in terminal: ```npm run test``` - It's configured to run and compile with Babel for ES6 in then server "package.json".
+You can run all tests entering the server folder in terminal and just typing: ```npm run test``` - It's configured to run and compile with Babel (ES6) in then server "package.json".
 
 #### Developed by
 Rodrigo Quiñones Pichioli, since Mar/02/2018
