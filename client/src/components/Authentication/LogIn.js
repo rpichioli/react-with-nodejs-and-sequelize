@@ -1,4 +1,4 @@
-import React from 'react';
+-import React from 'react';
 import classnames from 'classnames';
 
 class LogIn extends React.Component {
@@ -15,6 +15,16 @@ class LogIn extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
+		let errors = {};
+
+		if (this.state.identifier == '') errors.identifier = 'This field can\'t be empty';
+		if (this.state.password == '') errors.password = 'This field can\'t be empty';
+
+		if (Object.keys(errors).length == 0) {
+
+		} else {
+			this.setState({ errors });
+		}
 	}
 
 	render() {
