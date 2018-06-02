@@ -12,7 +12,7 @@ export function loggedOut(data) {
 }
 
 export function logIn(data) {
-	return dispatch = {
+	return dispatch => {
 		const { identifier, password } = data;
 		axios.post('/api/auth/login', { identifier, password })
 			.then(response => dispatch(loggedIn(response.data)))
@@ -21,7 +21,7 @@ export function logIn(data) {
 };
 
 export function logOut(data) {
-	return dispatch = {
+	return dispatch => {
 		const { identifier } = data;
 		axios.get('/api/auth/logout', { identifier })
 			.then(() => dispatch(loggedOut(identifier)))

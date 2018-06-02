@@ -1,5 +1,6 @@
--import React from 'react';
+import React from 'react';
 import classnames from 'classnames';
+import { logIn } from '../../actions/authentication';
 
 class LogIn extends React.Component {
 	state = {
