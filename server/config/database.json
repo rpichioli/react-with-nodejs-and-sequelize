@@ -9,14 +9,14 @@
     "test": {
         "username": "root",
         "password": "",
-        "database": "react_sequelize",
+        "database": "react_sequelize_test",
         "host": "",
         "dialect": "mysql"
     },
     "production": {
         "username": "root",
         "password": "",
-        "database": "react_sequelize",
+        "database": "react_sequelize_prod",
         "host": "",
         "dialect": "mysql"
     }
