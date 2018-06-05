@@ -1,4 +1,6 @@
-#### ================ In development stage ================
+> **Status:** In development stage
+
+# react-with-sequelize-and-passport
 
 ### Summary
 The main idea of this project is to create an application with relational database exposing data through API services using NodeJS + Express. The front-end uses React and Redux working directly with state that is filled by the NodeJS API.
