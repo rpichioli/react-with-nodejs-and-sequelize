@@ -8,7 +8,7 @@ import passport from 'passport';
 import bands from './routes/bands';
 import albums from './routes/albums';
 import models from './models';
-import strategies from './middleware/passport.js';
+import strategies from './config/passport.js';
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Passport
 // Initialize passport, express + passport session and add them both as middleware.
 // We do this by adding these lines some spaces after the bodyParser import line.
-app.use(session({ secret: 'node and more node please!', resave: true, saveUninitialized: true })); // session secret
+app.use(session({ secret: 'node_and_more_node_please!', resave: true, saveUninitialized: true })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
@@ -62,12 +62,13 @@ else
 
 module.exports = app;
 
-// ------------------------------------------------------------------------------
-// NodeJS Environment > process.env.NODE_ENV
-// ------------------------------------------------------------------------------
-// To set an environment variable in Windows normally:
-//		SET NODE_ENV=development
-// Through PowerShell terminal:
-//		$env:NODE_ENV="development"
+// ------------------------------------------------------------------------------ //
+// Set NodeJS Environment ---> process.env.NODE_ENV
+// ------------------------------------------------------------------------------ //
+// Windows normally
+// > SET NODE_ENV=development
+// PowerShell terminal:
+// > $env:NODE_ENV="development"
 // If you are in OSX or Linux terminals:
-//		export NODE_ENV=development
+// > export NODE_ENV=development
+// ------------------------------------------------------------------------------ //
