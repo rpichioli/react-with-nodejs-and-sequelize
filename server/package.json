@@ -23,6 +23,7 @@
 		"dotenv": "^5.0.1",
 		"express": "^4.16.3",
 		"express-session": "^1.15.6",
+		"jsonwebtoken": "^8.2.2",
 		"lodash": "^4.17.10",
 		"mocha": "^5.2.0",
 		"morgan": "^1.9.0",
