@@ -10,9 +10,13 @@ The registration layer has a simple login/logout feature made using HOC (High Or
 > - The **client-side** is a React + Redux app based.
 > - The **server-side** is built in NodeJS (Express) and works like an API server.
 > - This application uses Sequelize ORM to manage relational database and maintain it's data.
-> - The [Passport](https://www.npmjs.com/package/passport) is basically a Express-compatible authentication middleware for Node.js.
+> - The [Passport](https://www.npmjs.com/package/passport) is basically an Express-compatible authentication middleware for Node.js.
 
-I chose to use only [prop-types](https://www.npmjs.com/package/prop-types) to cover all that is required for data typing and obligation in React Components, when it's necessary. 
+The authentication process uses some features like [BCrypt](https://www.npmjs.com/package/bcrypt) and [JSONWebToken](https://www.npmjs.com/package/jsonwebtoken) to pass data through API encrypted and based in token, saved in storage to control in client-side state syncronized with Redux store and in server-side saved in NodeJS session. 
+
+The configuration files are located in config folder inside server scope. The token configurations are at `/server/config/secret.js` and Passport strategies at `/server/config/passport.js` individually.
+
+I choose to use only [prop-types](https://www.npmjs.com/package/prop-types) to cover all data typing and obligation requirements in React Components, when it's necessary. 
 
 #### Server-Side
 The NodeJS Express application, located in the ```/server/``` folder.
@@ -21,6 +25,8 @@ Inside it's scope use ```npm install``` to install all dependencies and ```npm s
 
 > - Be sure that the database is working before starting the server.
 > - All the database connections you need (for each environment) are in ```/server/config/database.json```.
+
+The Passport implementation uses
 
 #### Client-Side
 In the ```/client/``` folder we have the client-side React application.
