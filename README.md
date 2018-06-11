@@ -26,8 +26,6 @@ Inside it's scope use ```npm install``` to install all dependencies and ```npm s
 > - Be sure that the database is working before starting the server.
 > - All the database connections you need (for each environment) are in ```/server/config/database.json```.
 
-The Passport implementation uses
-
 #### Client-Side
 In the ```/client/``` folder we have the client-side React application.
 
@@ -40,11 +38,11 @@ The UI is fully made using [Semantic UI](https://semantic-ui.com/) - decided tha
 #### TDD + BDD
 We have some tests too to be sure that our client and server-side API are working succesfully.
 
-There some tests I wrote in Mocha + Chai, disposed in ```/server/test/```.
+I have writen some tests in API side using [Mocha](https://mochajs.org/) and [Chai](http://www.chaijs.com/), disposed in ```/server/test/```.
 
-Mocha is used to build the tests and Chai to configure the asserts (TDD) and the behaviours (BDD) to improve the test accuracy against the way we can use the API and also the way we should take care about errors. This way we know it's OK for every case.
+Mocha is used to build tests and Chai to configure the asserts (TDD) and the behaviours (BDD) to improve test accuracy against the way we can use the API and also the way we should take care about errors. This way we know it's OK for every situation.
 
-You can run all tests entering the server folder in terminal and just typing: ```npm run test``` - It's configured to run and compile with Babel (ES6) in then server "package.json".
+You can run all tests entering the server folder in terminal and just typing: ```npm run test``` - It's configured to run and compile with **Babel (ES6)** in then server "package.json".
 
 #### Developed by
 Rodrigo Quiñones Pichioli, since Mar/02/2018
