@@ -1,11 +1,15 @@
-import { LOGGED_IN, LOGGED_OUT } from '../actions/authentication';
+import isEmpty from 'lodash/isEmpty';
+import { SET_CURRENT_USER } from '../actions/authentication';
 
-export default function authentication(state = []action = {}) {
+const initialState = { isAuthenticated: false, user: {} };
+
+export default function authentication(state = [], action = {}) {
 	switch(action.type) {
-		case 'LOGGED_IN':
-			return state;
-		case 'LOGGED_OUT':
-			return state;
+		case SET_CURRENT_USER:
+			return {
+				isAuthenticated: !isEmpty(action.user),
+				user: action.user
+			}
 		default: return state;
 	}
 }
