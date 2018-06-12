@@ -10,11 +10,15 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 // Redux Provider for React
 import { Provider } from 'react-redux';
+// JSON Web Token
+import jwt from 'jsonwebtoken';
 
 // API that helps in caching assets and other files when the user is offline or on slow network
 import registerServiceWorker from './registerServiceWorker';
 // Root reducer to use in Redux Store
 import rootReducer from './reducers/rootReducer';
+// Actions
+import { setCurrentUser } from './actions/authActions';
 // The application, high order component
 import App from './components/App';
 // Application routes as external component
@@ -22,14 +26,22 @@ import Routes from './routes/Routes';
 // Style
 import './style/index.css';
 
+// Browser history
 const history = createBrowserHistory();
 
+// Redux store
 const store = createStore(
 	rootReducer,
 	composeWithDevTools(
 		applyMiddleware(thunk)
 	)
 );
+
+// Verify if token exists and set it to request headers
+if (localStorage.jwtToken) {
+	setAuthorizationToken(localStorage.jwtToken);
+	store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
+}
 
 ReactDOM.render(
 	<Provider store={store}>
