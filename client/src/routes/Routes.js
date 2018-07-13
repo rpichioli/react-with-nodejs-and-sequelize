@@ -2,8 +2,6 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Home from '../components/Home/Home';
-import LogIn from '../components/Authentication/LogIn';
-import SignUp from '../components/User/SignUp';
 import BandList from '../components/Band/BandList';
 import BandForm from '../components/Band/BandForm';
 import AlbumList from '../components/Band/Album/AlbumList';
@@ -20,8 +18,6 @@ class Routes extends React.Component {
 				<Route exact path="/band/:id/albums/" component={AlbumList} />
 				<Route exact path="/band/:id/album/new" component={AlbumForm} />
 				<Route exact path="/band/:id/album/:album_id" component={AlbumForm} />
-				<Route path="/log-in" component={LogIn} />
-				<Route path="/sign-up" component={SignUp} />
 			</Switch>
 		)
 	}

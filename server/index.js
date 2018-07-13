@@ -1,13 +1,9 @@
 import express from 'express';
 import session from 'express-session';
 import bodyParser from 'body-parser';
-//import serveStatic from 'serve-static';
 import cookieParser from 'cookie-parser';
-import passport from 'passport';
 
-import secret from './config/secret';
 import models from './models';
-import strategies from './config/passport.js'
 import bands from './routes/bands';
 import albums from './routes/albums';
 
@@ -28,20 +24,9 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Passport
-// Initialize passport, express + passport session and add them both as middleware.
-// We do this by adding these lines some spaces after the bodyParser import line.
-app.use(session({ secret: secret.jwtSecret, resave: true, saveUninitialized: true })); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-
 // Routes
 app.use('/api/bands/', bands);
 app.use('/api/albums/', albums);
-app.use('/api/auth/', app, passport); // Authentication with Passport middleware
-
-// Load passport strategies
-strategies(passport, models.user);
 
 // Middleware for errors
 app.use((req, res) => {

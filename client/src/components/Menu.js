@@ -14,15 +14,6 @@ class Menu extends React.Component {
 				<NavLink className="item" activeonlywhenexact="active" exact to="/bands">
 					Nested CRUD (Bands and Albums)
 				</NavLink>
-
-				<div class="right menu">
-					<div class="item">
-						<NavLink className="ui button" to="/log-in">Log in</NavLink>
-					</div>
-					<div class="item">
-						<NavLink className="ui button blue" to="/sign-up">Sign Up</NavLink>
-					</div>
-				</div>
 			</div>
 		);
 	}

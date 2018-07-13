@@ -18,7 +18,7 @@ import registerServiceWorker from './registerServiceWorker';
 // Root reducer to use in Redux Store
 import rootReducer from './reducers/rootReducer';
 // Actions
-import { setCurrentUser } from './actions/authActions';
+//import { setCurrentUser } from './actions/authActions';
 // The application, high order component
 import App from './components/App';
 // Application routes as external component
@@ -38,10 +38,10 @@ const store = createStore(
 );
 
 // Verify if token exists and set it to request headers
-if (localStorage.jwtToken) {
-	setAuthorizationToken(localStorage.jwtToken);
-	store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
-}
+// if (localStorage.jwtToken) {
+// 	setAuthorizationToken(localStorage.jwtToken);
+// 	store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
+// }
 
 ReactDOM.render(
 	<Provider store={store}>

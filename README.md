@@ -1,20 +1,13 @@
 > **Status:** In development stage
 
-# react-with-sequelize-and-passport
+# react-with-nodejs-and-sequelize
 
 ### Summary
 The main idea of this project is to create an application with relational database exposing data through API services using NodeJS + Express. The front-end uses React and Redux working directly with state that is filled by the NodeJS API.
 
-The registration layer has a simple login/logout feature made using HOC (High Order Component) in React-side that calls an authorization middleware in the API backend, as a layer, that authorizes the user to access all the stuff - if everything is OK.
-
 > - The **client-side** is a React + Redux app based.
 > - The **server-side** is built in NodeJS (Express) and works like an API server.
 > - This application uses Sequelize ORM to manage relational database and maintain it's data.
-> - The [Passport](https://www.npmjs.com/package/passport) is basically an Express-compatible authentication middleware for Node.js.
-
-The authentication process uses some features like [BCrypt](https://www.npmjs.com/package/bcrypt) and [JSONWebToken](https://www.npmjs.com/package/jsonwebtoken) to pass data through API encrypted and based in token, saved in storage to control in client-side state syncronized with Redux store and in server-side saved in NodeJS session. 
-
-The configuration files are located in config folder inside server scope. The token configurations are at `/server/config/secret.js` and Passport strategies at `/server/config/passport.js` individually.
 
 I choose to use only [prop-types](https://www.npmjs.com/package/prop-types) to cover all data typing and obligation requirements in React Components, when it's necessary. 
 
